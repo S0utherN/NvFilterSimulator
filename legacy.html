@@ -1,0 +1,3220 @@
+<!doctype html>
+<html lang="zh-CN" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>M42 · 窄带光路实验</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="M42 · 窄带光路实验" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-CN&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;M42 · 窄带光路实验&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+:root:not([data-app-block-surface], [data-visualize-standalone]) &gt; body {
+  padding: 12px;
+}
+
+.cursor-interaction {
+  cursor: var(--cursor-interaction, pointer);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: var(--cursor-interaction, pointer);
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+.widget {
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  box-shadow: 0 0 0 0.5px var(--border-strong, var(--border));
+  color: var(--foreground);
+  background: var(--background);
+}
+
+#widget &gt; :not(.card, .widget, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The shared runtime owns data-tooltip; suppress AppBlock&#x27;s pseudo-tooltip. */
+main [data-tooltip]::after {
+  content: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+/* Shared preview chrome; product styles stay inside each variant. */
+.viz-dotted-background {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--foreground) 14%, transparent) 0.8px,
+    transparent 0.8px
+  );
+  background-position: center;
+  background-size: 16px 16px;
+}
+
+.viz-carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.viz-carousel:has(&gt; .viz-carousel-controls) {
+  min-height: calc(60px + var(--viz-carousel-picker-height, 0px));
+  padding-bottom: 60px;
+}
+
+.viz-carousel &gt; [data-variant][hidden] {
+  display: none !important;
+}
+
+.viz-carousel &gt; [data-variant] {
+  isolation: isolate;
+}
+
+.viz-carousel-controls {
+  --viz-carousel-hover: light-dark(
+    color-mix(in srgb, var(--foreground) 5.4%, transparent),
+    color-mix(in srgb, var(--foreground) 7.8%, transparent)
+  );
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 50%;
+  display: flex;
+  width: max-content;
+  /* Leave room for the host&#x27;s design-controls launcher at the trailing edge. */
+  max-width: calc(100% - 96px);
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  /* Match the settings dropdown chrome independently of the content font size. */
+  font-size: 13px;
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+.viz-carousel-controls button,
+.viz-carousel-picker &gt; summary {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 6px;
+  -webkit-app-region: no-drag;
+  border: 0;
+  border-radius: 14px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viz-carousel-controls &gt; button,
+.viz-carousel-picker &gt; summary {
+  position: relative;
+  isolation: isolate;
+}
+
+.viz-carousel-controls &gt; button {
+  --icon-size: 16px;
+  width: 30px;
+  padding: 0;
+}
+
+.viz-carousel-picker &gt; summary {
+  padding-inline: 12px;
+}
+
+.viz-carousel-controls .viz-carousel-caret {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin: 0;
+  color: inherit;
+  transform: rotate(180deg);
+}
+
+.viz-carousel-controls &gt; button &gt; svg,
+.viz-carousel-controls .viz-carousel-caret,
+.viz-carousel-count {
+  opacity: 0.5;
+}
+
+.viz-carousel-controls &gt; button::before,
+.viz-carousel-picker &gt; summary::before {
+  position: absolute;
+  z-index: -1;
+  inset: 3px;
+  border-radius: 12px;
+  content: &quot;&quot;;
+  pointer-events: none;
+}
+
+.viz-carousel-controls &gt; button:hover::before,
+.viz-carousel-picker &gt; summary:hover::before {
+  background: var(--viz-carousel-hover);
+}
+
+.viz-carousel-controls &gt; button,
+.viz-carousel-controls [data-lucide],
+.viz-carousel-controls .lucide {
+  flex-shrink: 0;
+}
+
+.viz-carousel-picker {
+  min-width: 0;
+}
+
+.viz-carousel-picker &gt; summary {
+  min-width: 0;
+  list-style: none;
+}
+
+.viz-carousel-picker &gt; summary::-webkit-details-marker {
+  display: none;
+}
+
+.viz-carousel-count {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.viz-carousel-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.viz-carousel-options {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+  display: flex;
+  max-height: 240px;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  box-shadow: 0 4px 12px light-dark(rgb(0 0 0 / 6%), rgb(0 0 0 / 25%));
+}
+
+.viz-carousel-options &gt; button {
+  width: 100%;
+  min-height: 28px;
+  justify-content: flex-start;
+  padding: 4px 8px;
+  font-size: var(--font-size-small);
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.viz-carousel-options &gt; [aria-current=&quot;true&quot;],
+.viz-carousel-options &gt; button:hover {
+  background: var(--viz-carousel-hover);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+.viz-carousel-controls :is(button, summary):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .viz-carousel:has(&gt; .viz-carousel-controls) {
+    min-height: calc(76px + var(--viz-carousel-picker-height, 0px));
+    padding-bottom: 76px;
+  }
+
+  .btn,
+  .nav-link,
+  .viz-carousel-controls button,
+  .viz-carousel-picker &gt; summary,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const hasOwn = Object.hasOwn;
+  const parentWindow = globalThis.parent;
+  const stringify = JSON.stringify;
+  const parse = JSON.parse;
+  const encode = TextEncoder.prototype.encode.bind(new TextEncoder());
+  const initialStateElement = document.getElementById(
+    &quot;codex-visualization-widget-state&quot;,
+  );
+  const initialGlobals = parse(initialStateElement?.textContent ?? &quot;{}&quot;);
+  initialStateElement?.remove();
+  /** @type {Record&lt;string, unknown&gt; | null} */
+  let state = initialGlobals.widgetState ?? null;
+  const statePersistence = initialGlobals.statePersistence ?? &quot;none&quot;;
+  let nextStateRequestId = 0;
+  /** @type {Map&lt;number, { resolve: () =&gt; void; reject: (error: Error) =&gt; void; timeout: ReturnType&lt;typeof globalThis.setTimeout&gt;; serializedState: string }&gt;} */
+  const pendingStateWrites = new Map();
+  const persistenceError = () =&gt;
+    Object.assign(
+      new Error(&quot;The host could not persist the widget state update&quot;),
+      {
+        code: -32000,
+        data: { code: &quot;widget_state_persistence_failed&quot;, retryable: false },
+      },
+    );
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  /**
+   * @param {Record&lt;string, unknown&gt; | ((previous: Record&lt;string, unknown&gt; | null) =&gt; Record&lt;string, unknown&gt;)} next
+   * @returns {Promise&lt;void&gt;}
+   */
+  const setWidgetState = async (next) =&gt; {
+    const nextState = typeof next === &quot;function&quot; ? next(state) : next;
+    if (
+      nextState == null ||
+      typeof nextState !== &quot;object&quot; ||
+      isArray(nextState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const inputState = stringify(
+      nextState,
+      (_key, /** @type {unknown} */ value) =&gt; {
+        if (
+          typeof value === &quot;undefined&quot; ||
+          typeof value === &quot;function&quot; ||
+          typeof value === &quot;symbol&quot; ||
+          (typeof value === &quot;number&quot; &amp;&amp; !Number.isFinite(value))
+        ) {
+          throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+        }
+        return value;
+      },
+    );
+    const parsedState = parse(inputState);
+    if (
+      parsedState == null ||
+      typeof parsedState !== &quot;object&quot; ||
+      isArray(parsedState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const storedState = {
+      modelContent: null,
+      privateContent: null,
+      ...parsedState,
+    };
+    const serializedState = stringify(storedState);
+    if (encode(serializedState).length &gt; 16 * 1024) {
+      throw new TypeError(
+        &quot;Widget state must be a JSON object of at most 16 KiB&quot;,
+      );
+    }
+    if (
+      hasOwn(storedState, &quot;imageIds&quot;) &amp;&amp;
+      (!isArray(storedState.imageIds) ||
+        storedState.imageIds.some(
+          (/** @type {unknown} */ id) =&gt; typeof id !== &quot;string&quot;,
+        ))
+    ) {
+      throw new TypeError(&quot;Widget state imageIds must be an array of strings&quot;);
+    }
+    if (storedState.imageIds?.length &gt; 0) {
+      throw Object.assign(
+        new TypeError(&quot;Visualization state does not support image attachments&quot;),
+        { code: -32602, data: { code: &quot;images_unsupported&quot; } },
+      );
+    }
+    state = storedState;
+    globalThis.openai.widgetState = state;
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: { widgetState: state } },
+      }),
+    );
+    if (statePersistence === &quot;none&quot;) {
+      throw persistenceError();
+    }
+    const id = ++nextStateRequestId;
+    return new Promise((resolve, reject) =&gt; {
+      const timeout = globalThis.setTimeout(() =&gt; {
+        pendingStateWrites.delete(id);
+        reject(persistenceError());
+      }, 30_000);
+      pendingStateWrites.set(id, { resolve, reject, timeout, serializedState });
+      postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+    });
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      setWidgetState,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+      widgetState: state,
+      statePersistence,
+      stateModelContext: &quot;none&quot;,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        (document.getElementById(&quot;m42-filter-lab&quot;)?.getBoundingClientRect().height || document.body.getBoundingClientRect().height),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        hostPort != null ||
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            } else if (
+              typeof data === &quot;object&quot; &amp;&amp;
+              data?.type === &quot;widget-state-result&quot;
+            ) {
+              /** @type {unknown} */
+              const id = data.id;
+              if (typeof id !== &quot;number&quot;) {
+                return;
+              }
+              const pending = pendingStateWrites.get(id);
+              if (pending != null) {
+                pendingStateWrites.delete(id);
+                globalThis.clearTimeout(pending.timeout);
+                if (data.ok === true) {
+                  pending.resolve();
+                } else {
+                  pending.reject(persistenceError());
+                }
+              }
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      for (const [id, { serializedState }] of pendingStateWrites) {
+        postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+      }
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;div id=&quot;m42-filter-lab&quot; lang=&quot;zh-CN&quot;&gt;
+&lt;style&gt;
+#m42-filter-lab{color:var(--foreground);overflow-wrap:break-word}
+#m42-filter-lab .lab-stack{display:grid;gap:16px}
+#m42-filter-lab .lab-head,#m42-filter-lab .field-heading,#m42-filter-lab .panel-head,#m42-filter-lab .help-heading{display:flex;gap:8px;justify-content:space-between;align-items:center}
+#m42-filter-lab .lab-head{flex-wrap:wrap}#m42-filter-lab .lab-head h2{margin:0}
+#m42-filter-lab .intro-copy{margin:4px 0 0}
+#m42-filter-lab .control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+#m42-filter-lab .field{min-width:0;display:grid;align-content:start;gap:6px}
+#m42-filter-lab .label-value{display:flex;gap:8px;align-items:baseline;justify-content:space-between;flex:1;flex-wrap:wrap}
+#m42-filter-lab .help-slot{grid-column:1/-1}#m42-filter-lab .help-slot p{margin:10px 0 0}
+#m42-filter-lab .help-heading strong{font-weight:500}
+#m42-filter-lab .slider-ticks,#m42-filter-lab .swipe-captions{display:flex;justify-content:space-between;gap:10px}
+#m42-filter-lab .section-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+#m42-filter-lab .section-body{display:grid;gap:14px;padding-top:12px}
+#m42-filter-lab .images-layout,#m42-filter-lab .metrics-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#m42-filter-lab figure{margin:0;min-width:0}#m42-filter-lab .scene{display:block;width:100%;aspect-ratio:1}
+#m42-filter-lab .panel-head{margin-bottom:8px;flex-wrap:wrap}
+#m42-filter-lab .metric-column{display:grid;gap:8px;min-width:0;align-content:start}
+#m42-filter-lab .metric-label{display:flex;align-items:center;justify-content:space-between;gap:4px}
+#m42-filter-lab .metric-value{display:block;font-weight:500}
+#m42-filter-lab .comparison-title{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#m42-filter-lab .mobile-comparison{display:none}
+#m42-filter-lab .swipe-canvas{width:100%;aspect-ratio:1;display:block;touch-action:pan-y}
+#m42-filter-lab .swipe-captions{margin-bottom:8px}
+#m42-filter-lab .credit{overflow-wrap:anywhere}#m42-filter-lab .optical-canvas{display:block;width:100%}
+#m42-filter-lab .mini-labels{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+#m42-filter-lab .state-wrap{display:flex;gap:8px;align-items:center}#m42-filter-lab .state-wrap&gt;span{flex:1;min-width:0}
+#m42-filter-lab .optical-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+#m42-filter-lab summary{padding:10px 0}#m42-filter-lab .glossary-item{border-bottom:1px solid var(--border)}#m42-filter-lab .glossary-item p{margin:0 0 12px}
+#m42-filter-lab .parameter-list{display:grid;gap:14px;margin:0}#m42-filter-lab .parameter-list dt{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:500}#m42-filter-lab .parameter-list dd{margin:0}
+#m42-filter-lab .field-map{display:block;width:100%;max-width:280px;aspect-ratio:1;margin:0 auto}
+#m42-filter-lab .field-stats{display:grid;gap:4px;margin-top:8px}
+#m42-filter-lab .crop-note{margin:0}
+#m42-filter-lab [hidden]{display:none!important}
+@media(max-width:640px){#m42-filter-lab .main-controls,#m42-filter-lab .advanced-controls{grid-template-columns:1fr}#m42-filter-lab .desktop-comparison{display:none}#m42-filter-lab .mobile-comparison{display:block}#m42-filter-lab .lab-stack{gap:14px}#m42-filter-lab .control-grid{column-gap:12px}#m42-filter-lab .metric-column{gap:4px}}
+&lt;/style&gt;
+&lt;div class=&quot;lab-stack&quot;&gt;
+&lt;div data-help-scope&gt;&lt;div class=&quot;lab-head&quot;&gt;&lt;h2&gt;M42 · 窄带光路实验&lt;/h2&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;intro&quot; aria-label=&quot;解释M42和这个演示&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;p class=&quot;intro-copy text-small text-muted&quot;&gt;改变滤镜和焦比，看看星云会变暗，还是更容易从天空背景中看出来。&lt;/p&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-comparison-mode&quot;&gt;图像对比什么&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;preview&quot; aria-label=&quot;解释图像对比方式&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-comparison-mode&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-comparison-hint&quot;&gt;&lt;option value=&quot;focal&quot; selected&gt;不同焦距 · 普通滤镜&lt;/option&gt;&lt;option value=&quot;focalOptimized&quot;&gt;不同焦距 · 优化滤镜&lt;/option&gt;&lt;option value=&quot;position&quot;&gt;前置 vs 后置 · 普通滤镜&lt;/option&gt;&lt;option value=&quot;positionOptimized&quot;&gt;前置 vs 后置 · 优化滤镜&lt;/option&gt;&lt;option value=&quot;design&quot;&gt;普通 vs 优化 · 所选位置&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-comparison-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div id=&quot;m42-focal-controls&quot; class=&quot;control-grid&quot;&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label id=&quot;m42-focal-left-label&quot; class=&quot;form-label&quot; for=&quot;m42-focal-left&quot;&gt;左侧焦距&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;focal&quot; aria-label=&quot;解释焦距与焦比&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-focal-left&quot; class=&quot;form-select&quot;&gt;&lt;option value=&quot;16&quot;&gt;16 mm&lt;/option&gt;&lt;option value=&quot;25&quot; selected&gt;25 mm&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;35 mm&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;50 mm&lt;/option&gt;&lt;option value=&quot;85&quot;&gt;85 mm&lt;/option&gt;&lt;option value=&quot;135&quot;&gt;135 mm&lt;/option&gt;&lt;option value=&quot;200&quot;&gt;200 mm&lt;/option&gt;&lt;option value=&quot;300&quot;&gt;300 mm&lt;/option&gt;&lt;/select&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div id=&quot;m42-focal-right-wrap&quot; class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-focal-right&quot;&gt;右侧焦距&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;focal&quot; aria-label=&quot;解释不同焦距的公平比较&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-focal-right&quot; class=&quot;form-select&quot;&gt;&lt;option value=&quot;16&quot;&gt;16 mm&lt;/option&gt;&lt;option value=&quot;25&quot;&gt;25 mm&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;35 mm&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;50 mm&lt;/option&gt;&lt;option value=&quot;85&quot; selected&gt;85 mm&lt;/option&gt;&lt;option value=&quot;135&quot;&gt;135 mm&lt;/option&gt;&lt;option value=&quot;200&quot;&gt;200 mm&lt;/option&gt;&lt;option value=&quot;300&quot;&gt;300 mm&lt;/option&gt;&lt;/select&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;m42-focal-hint&quot; class=&quot;text-small text-muted&quot;&gt;两边使用同一焦比、同一片滤镜与18 mm圆形阴极；只改变焦距。&lt;/div&gt;
+
+&lt;div class=&quot;control-grid main-controls&quot;&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;div class=&quot;label-value&quot;&gt;&lt;label id=&quot;m42-f-label&quot; class=&quot;form-label&quot; for=&quot;m42-f&quot;&gt;成像焦比&lt;/label&gt;&lt;output id=&quot;m42-f-output&quot; class=&quot;tabular-nums&quot; for=&quot;m42-f&quot;&gt;F1.20&lt;/output&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;f&quot; aria-label=&quot;解释焦比和快慢&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;input id=&quot;m42-f&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0.95&quot; max=&quot;6&quot; step=&quot;0.05&quot; value=&quot;1.2&quot; aria-describedby=&quot;m42-f-hint&quot;&gt;&lt;div class=&quot;slider-ticks text-small text-muted&quot;&gt;&lt;span id=&quot;m42-f-min&quot;&gt;F0.95&lt;/span&gt;&lt;span id=&quot;m42-f-max&quot;&gt;F6&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;m42-f-hint&quot; class=&quot;text-small text-muted&quot;&gt;F 后的数字越小，光锥越宽，后置滤镜遇到的斜光越多。&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-position&quot;&gt;滤镜放在哪里&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;position&quot; aria-label=&quot;解释五种滤镜位置&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-position&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-position-hint&quot;&gt;&lt;option value=&quot;rear&quot;&gt;直焦 · 镜头后&lt;/option&gt;&lt;option value=&quot;front&quot; selected&gt;直焦 · 镜头前&lt;/option&gt;&lt;option value=&quot;afocalBefore&quot;&gt;无焦 · 目镜入光端&lt;/option&gt;&lt;option value=&quot;afocalBetween&quot;&gt;无焦 · 目镜与夜视镜头之间&lt;/option&gt;&lt;option value=&quot;afocalAfter&quot;&gt;无焦 · 夜视镜头后&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-position-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;control-grid&quot;&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-band&quot;&gt;波段&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;band&quot; aria-label=&quot;解释Hα、OIII和双窄带&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-band&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-band-hint&quot;&gt;&lt;option value=&quot;ha&quot;&gt;Hα · 氢的红光&lt;/option&gt;&lt;option value=&quot;oiii&quot;&gt;OIII · 氧的蓝绿光&lt;/option&gt;&lt;option value=&quot;dual&quot;&gt;Hα + OIII · 双窄&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-band-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-width&quot;&gt;带宽&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;width&quot; aria-label=&quot;解释3至30纳米带宽&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-width&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-width-hint&quot;&gt;&lt;option value=&quot;3&quot;&gt;3 nm · 窄&lt;/option&gt;&lt;option value=&quot;5&quot;&gt;5 nm&lt;/option&gt;&lt;option value=&quot;7&quot; selected&gt;7 nm&lt;/option&gt;&lt;option value=&quot;10&quot;&gt;10 nm&lt;/option&gt;&lt;option value=&quot;12&quot;&gt;12 nm&lt;/option&gt;&lt;option value=&quot;15&quot;&gt;15 nm&lt;/option&gt;&lt;option value=&quot;20&quot;&gt;20 nm&lt;/option&gt;&lt;option value=&quot;25&quot;&gt;25 nm&lt;/option&gt;&lt;option value=&quot;30&quot;&gt;30 nm · 宽&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-width-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;details id=&quot;m42-settings&quot;&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;&lt;span class=&quot;section-summary&quot;&gt;&lt;span&gt;优化与显示设置&lt;/span&gt;&lt;span id=&quot;m42-settings-summary&quot; class=&quot;text-small text-muted&quot;&gt;按 F2 优化 · 固定曝光&lt;/span&gt;&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;section-body control-grid advanced-controls&quot;&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-design&quot;&gt;优化版的设计焦比&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;design&quot; aria-label=&quot;解释优化版的设计焦比&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-design&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-design-hint&quot;&gt;&lt;option value=&quot;0.95&quot;&gt;按 F0.95 设计&lt;/option&gt;&lt;option value=&quot;1.2&quot;&gt;按 F1.2 设计&lt;/option&gt;&lt;option value=&quot;1.4&quot;&gt;按 F1.4 设计&lt;/option&gt;&lt;option value=&quot;2&quot; selected&gt;按 F2 设计&lt;/option&gt;&lt;option value=&quot;2.8&quot;&gt;按 F2.8 设计&lt;/option&gt;&lt;option value=&quot;4&quot;&gt;按 F4 设计&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-design-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;field&quot; data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-display&quot;&gt;图像怎么显示&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;display&quot; aria-label=&quot;解释曝光、拉伸和统一天空亮度&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-display&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-display-hint&quot;&gt;&lt;option value=&quot;fixed&quot;&gt;固定曝光与拉伸&lt;/option&gt;&lt;option value=&quot;sky&quot;&gt;统一天空亮度&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-display-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
+&lt;div id=&quot;m42-eyepiece-wrap&quot; class=&quot;field&quot; data-help-scope hidden&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-eyepiece&quot;&gt;无焦目镜&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;eyepiece&quot; aria-label=&quot;解释55和67毫米目镜&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-eyepiece&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-eyepiece-hint&quot;&gt;&lt;option value=&quot;55&quot;&gt;55 mm&lt;/option&gt;&lt;option value=&quot;67&quot; selected&gt;67 mm&lt;/option&gt;&lt;/select&gt;&lt;div id=&quot;m42-eyepiece-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div id=&quot;m42-angle-wrap&quot; class=&quot;field&quot; data-help-scope hidden&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;div class=&quot;label-value&quot;&gt;&lt;label id=&quot;m42-angle-label&quot; class=&quot;form-label&quot; for=&quot;m42-angle&quot;&gt;目标离中心多远&lt;/label&gt;&lt;output id=&quot;m42-angle-output&quot; class=&quot;tabular-nums&quot; for=&quot;m42-angle&quot;&gt;0.0°&lt;/output&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;angle&quot; aria-label=&quot;解释离轴角和视场&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;input id=&quot;m42-angle&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;18&quot; step=&quot;0.1&quot; value=&quot;0&quot; aria-describedby=&quot;m42-angle-hint&quot;&gt;&lt;div id=&quot;m42-angle-hint&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;div class=&quot;state-wrap&quot;&gt;&lt;span id=&quot;m42-state-detail&quot; class=&quot;text-small text-muted&quot; aria-live=&quot;polite&quot;&gt;&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;beam&quot; aria-label=&quot;解释当前光束、角度和最终焦比&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;details id=&quot;m42-field-section&quot; open&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;18 mm阴极全视场 · 看有效视野&lt;/summary&gt;&lt;div class=&quot;section-body&quot; data-help-scope&gt;
+&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-field-view&quot;&gt;全视场显示什么&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;fieldmap&quot; aria-label=&quot;解释真实取景和透过分布&quot;&gt;?&lt;/button&gt;&lt;/div&gt;
+&lt;select id=&quot;m42-field-view&quot; class=&quot;form-select&quot; aria-describedby=&quot;m42-field-view-hint&quot;&gt;&lt;option value=&quot;transmission&quot;&gt;主线透过分布 · 看掉视角&lt;/option&gt;&lt;option value=&quot;scene&quot;&gt;M42真实取景 · 看大小与位置&lt;/option&gt;&lt;/select&gt;
+&lt;div id=&quot;m42-field-view-hint&quot; class=&quot;text-small text-muted&quot;&gt;主线透过图：黑色0%，白色100%；两图同一刻度。小框为M42特写的实际范围。&lt;/div&gt;
+&lt;div class=&quot;images-layout&quot;&gt;
+&lt;figure&gt;&lt;figcaption id=&quot;m42-field-left-title&quot; class=&quot;panel-head&quot;&gt;25 mm&lt;/figcaption&gt;&lt;canvas id=&quot;m42-field-left&quot; class=&quot;field-map&quot; width=&quot;280&quot; height=&quot;280&quot; role=&quot;img&quot; aria-label=&quot;左侧镜头全视场主线透过分布&quot;&gt;&lt;/canvas&gt;&lt;div class=&quot;field-stats text-small tabular-nums&quot;&gt;&lt;span id=&quot;m42-field-left-fov&quot;&gt;&lt;/span&gt;&lt;span id=&quot;m42-field-left-transmission&quot;&gt;&lt;/span&gt;&lt;span id=&quot;m42-field-left-target&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;figcaption id=&quot;m42-field-right-title&quot; class=&quot;panel-head&quot;&gt;85 mm&lt;/figcaption&gt;&lt;canvas id=&quot;m42-field-right&quot; class=&quot;field-map&quot; width=&quot;280&quot; height=&quot;280&quot; role=&quot;img&quot; aria-label=&quot;右侧镜头全视场主线透过分布&quot;&gt;&lt;/canvas&gt;&lt;div class=&quot;field-stats text-small tabular-nums&quot;&gt;&lt;span id=&quot;m42-field-right-fov&quot;&gt;&lt;/span&gt;&lt;span id=&quot;m42-field-right-transmission&quot;&gt;&lt;/span&gt;&lt;span id=&quot;m42-field-right-target&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/figure&gt;
+&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;div data-help-scope&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;span&gt;M42特写 · 放大比较滤镜损失&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;crop&quot; aria-label=&quot;解释全视场与放大特写的区别&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;p id=&quot;m42-crop-note&quot; class=&quot;crop-note text-small text-muted&quot;&gt;下方把同一块天区放大到相同大小；焦距造成的实际大小差异请看上方小框。&lt;/p&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;desktop-comparison images-layout&quot;&gt;
+&lt;figure&gt;&lt;figcaption class=&quot;panel-head&quot;&gt;&lt;span id=&quot;m42-left-title&quot;&gt;前置滤镜&lt;/span&gt;&lt;span id=&quot;m42-left-subtitle&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;canvas id=&quot;m42-normal&quot; class=&quot;scene&quot; width=&quot;420&quot; height=&quot;420&quot; role=&quot;img&quot; aria-label=&quot;左侧M42灰度形态模拟&quot;&gt;&lt;/canvas&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;figcaption class=&quot;panel-head&quot;&gt;&lt;span id=&quot;m42-right-title&quot;&gt;后置滤镜&lt;/span&gt;&lt;span id=&quot;m42-opt-label&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;canvas id=&quot;m42-optimized&quot; class=&quot;scene&quot; width=&quot;420&quot; height=&quot;420&quot; role=&quot;img&quot; aria-label=&quot;右侧M42灰度形态模拟&quot;&gt;&lt;/canvas&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;div class=&quot;mobile-comparison&quot; data-help-scope&gt;&lt;div class=&quot;swipe-captions&quot;&gt;&lt;span id=&quot;m42-mobile-left&quot;&gt;← 前置滤镜&lt;/span&gt;&lt;span id=&quot;m42-mobile-right&quot;&gt;后置滤镜 →&lt;/span&gt;&lt;/div&gt;&lt;canvas id=&quot;m42-mobile-scene&quot; class=&quot;swipe-canvas cursor-interaction&quot; width=&quot;420&quot; height=&quot;420&quot; role=&quot;img&quot; aria-label=&quot;左右拖动分界线，对比前置和后置滤镜；也可以使用下面的滑块&quot;&gt;&lt;/canvas&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-wipe&quot;&gt;左右拖动分界线&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;compare&quot; aria-label=&quot;解释手机上的滑动对比&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;input id=&quot;m42-wipe&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;50&quot; aria-label=&quot;左侧图像占据的比例&quot;&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;div class=&quot;metrics-layout&quot;&gt;
+&lt;div class=&quot;metric-column&quot;&gt;&lt;div class=&quot;comparison-title&quot;&gt;&lt;span id=&quot;m42-left-metric-title&quot;&gt;前置滤镜&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;preview&quot; aria-label=&quot;解释左侧预览&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;div&gt;&lt;div class=&quot;metric-label&quot;&gt;&lt;span&gt;对比度保留&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;contrast&quot; aria-label=&quot;解释左侧对比度保留率&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;output id=&quot;m42-normal-contrast&quot; class=&quot;metric-value tabular-nums&quot;&gt;&lt;/output&gt;&lt;/div&gt;&lt;div&gt;&lt;div class=&quot;metric-label&quot;&gt;&lt;span&gt;主线透过&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;throughput&quot; aria-label=&quot;解释左侧主线透过率&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;output id=&quot;m42-normal-target&quot; class=&quot;metric-value tabular-nums&quot;&gt;&lt;/output&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;metric-column&quot;&gt;&lt;div class=&quot;comparison-title&quot;&gt;&lt;span id=&quot;m42-right-metric-title&quot;&gt;后置滤镜&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;preview&quot; aria-label=&quot;解释右侧预览&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;div&gt;&lt;div class=&quot;metric-label&quot;&gt;&lt;span&gt;对比度保留&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;contrast&quot; aria-label=&quot;解释右侧对比度保留率&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;output id=&quot;m42-optimized-contrast&quot; class=&quot;metric-value tabular-nums&quot;&gt;&lt;/output&gt;&lt;/div&gt;&lt;div&gt;&lt;div class=&quot;metric-label&quot;&gt;&lt;span&gt;主线透过&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;throughput&quot; aria-label=&quot;解释右侧主线透过率&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;output id=&quot;m42-optimized-target&quot; class=&quot;metric-value tabular-nums&quot;&gt;&lt;/output&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&quot;field-heading&quot;&gt;&lt;span class=&quot;text-small text-muted&quot;&gt;100% 参考：同样带宽，假设没有角度偏移。&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;reference&quot; aria-label=&quot;解释百分比的100%参考&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;details id=&quot;m42-optical-section&quot;&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;光路动画 · 看滤镜前后的光束&lt;/summary&gt;&lt;div class=&quot;section-body&quot; data-help-scope&gt;
+&lt;div class=&quot;field-heading&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;m42-ray-mode&quot;&gt;动画演示什么&lt;/label&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;raymode&quot; aria-label=&quot;解释前后置对照和当前光路动画&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;select id=&quot;m42-ray-mode&quot; class=&quot;form-select&quot;&gt;&lt;option value=&quot;frontback&quot;&gt;前置 vs 后置 · 同时对照&lt;/option&gt;&lt;option value=&quot;current&quot;&gt;当前设置 · 普通 vs 优化&lt;/option&gt;&lt;/select&gt;
+&lt;div id=&quot;m42-ray-description&quot; class=&quot;text-small text-muted&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;optical-heading&quot;&gt;&lt;span&gt;光从左向右走&lt;/span&gt;&lt;div class=&quot;comparison-title&quot;&gt;&lt;button id=&quot;m42-play&quot; type=&quot;button&quot; class=&quot;btn&quot;&gt;播放一束光&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;rays&quot; aria-label=&quot;解释光路动画和光线明暗&quot;&gt;?&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;canvas id=&quot;m42-rays&quot; class=&quot;optical-canvas&quot; role=&quot;img&quot; aria-label=&quot;光线穿过前置或后置滤镜的对照动画&quot;&gt;&lt;/canvas&gt;&lt;div id=&quot;m42-ray-phase&quot; class=&quot;text-small&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;div id=&quot;m42-passband-detail&quot; class=&quot;mini-labels text-small tabular-nums&quot;&gt;&lt;/div&gt;&lt;div class=&quot;mini-labels&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;components&quot;&gt;镜头、目镜、阴极 ?&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;shift&quot;&gt;蓝移与预补偿 ?&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details id=&quot;m42-glossary&quot;&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;小白词典 · 点开看解释&lt;/summary&gt;&lt;div id=&quot;m42-glossary-content&quot;&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;这份模拟怎么算的？&lt;/summary&gt;&lt;div class=&quot;section-body&quot;&gt;&lt;dl class=&quot;parameter-list&quot;&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;滤镜模型&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;coating&quot; aria-label=&quot;解释膜系、有效折射率和四次超高斯&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;n&lt;sub&gt;eff&lt;/sub&gt; = 2；四次超高斯；峰值透过率 100%。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;光束模型&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;telecentric&quot; aria-label=&quot;解释远心光路和均匀入瞳&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;后置使用理想像方远心光路；均匀有效入瞳；不另加暗角。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;无焦配置&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;pupils&quot; aria-label=&quot;解释无焦配置和光瞳匹配&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;600 mm 望远镜；55 / 67 mm 目镜；26 mm F1.2 夜视物镜。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;天空与星云背景&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;continuum&quot; aria-label=&quot;解释连续谱和背景的设定&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;平坦天空连续谱：0.005；星云连续谱：0.002。单位为模型光子数 / nm。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;谱线比例&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;weights&quot; aria-label=&quot;解释谱线权重和积分通量&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;Hα 1；Hβ 0.19；OIII 500.7：0.62、495.9：0.20；NII 658.3：0.19、654.8：0.065。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;图像与实际观测的差别&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;limits&quot; aria-label=&quot;解释理想模拟的局限&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;各谱线共用灰度形态；不模拟像差、器材透过损失、探测器响应或噪声。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div data-help-scope&gt;&lt;dt&gt;M42 的真实角尺度&lt;button type=&quot;button&quot; class=&quot;btn btn-ghost&quot; data-help=&quot;scale&quot; aria-label=&quot;解释角分和星云特写的大小&quot;&gt;?&lt;/button&gt;&lt;/dt&gt;&lt;dd&gt;特写范围 30.03′ × 30.03′，约半度；不会把它当作铺满 40° 天空。&lt;/dd&gt;&lt;div class=&quot;help-slot&quot; data-help-slot&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/dl&gt;&lt;div class=&quot;text-small&quot;&gt;&lt;a href=&quot;https://alluxa.com/optical-filter-specs/angle-of-incidence-aoi-and-polarization/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;角度响应资料&lt;/a&gt; · &lt;a href=&quot;https://alluxa.com/optical-filter-specs/cone-half-angle-cha/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;光锥模型资料&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;div class=&quot;credit text-small text-muted&quot;&gt;形态原图：&lt;a href=&quot;https://esahubble.org/images/heic0601a/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;NASA, ESA, M. Robberto (Space Telescope Science Institute/ESA) and the Hubble Space Telescope Orion Treasury Project Team&lt;/a&gt; · &lt;a href=&quot;https://esahubble.org/copyright/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CC BY 4.0&lt;/a&gt; · 已作灰度、点状结构平滑与亮度重映射。&lt;/div&gt;
+&lt;div id=&quot;m42-status&quot; class=&quot;sr-only&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* Ideal interference-filter model. No optical aberrations, material losses,
+ * detector response, photon noise, or atmospheric attenuation are included.
+ * All spectrum weights are supplied/illustrative, not an M42 measurement.
+ */
+(function (root) {
+  &#x27;use strict&#x27;;
+  const LN2 = Math.LN2;
+  const EW_FACTOR = 3.625609908221908 / (4 * Math.pow(LN2, 0.25));
+  const DEG = Math.PI / 180;
+  const DEFAULT_LINES = Object.freeze([
+    { name: &#x27;Hβ&#x27;, wavelength: 486.133, weight: 1 },
+    { name: &#x27;[O III] 4959&#x27;, wavelength: 495.891, weight: 1 },
+    { name: &#x27;[O III] 5007&#x27;, wavelength: 500.7, weight: 3 },
+    { name: &#x27;[N II] 6548&#x27;, wavelength: 654.805, weight: 0.15 },
+    { name: &#x27;Hα&#x27;, wavelength: 656.28, weight: 2.86 },
+    { name: &#x27;[N II] 6583&#x27;, wavelength: 658.345, weight: 0.45 },
+    { name: &#x27;[S II] 6716&#x27;, wavelength: 671.644, weight: 0.1 },
+    { name: &#x27;[S II] 6731&#x27;, wavelength: 673.082, weight: 0.1 }
+  ]);
+  const offsetCache = new Map();
+
+  function finite(value, fallback) {
+    return Number.isFinite(Number(value)) ? Number(value) : fallback;
+  }
+
+  function profile(delta, width) {
+    const x = 2 * delta / width;
+    return Math.abs(x) &gt; 5 ? 0 : Math.exp(-LN2 * x * x * x * x);
+  }
+
+  function geometry(config) {
+    const c = config || {};
+    const position = c.position || &#x27;rear&#x27;;
+    const telescopeF = Math.max(0.51, finite(c.telescopeF, finite(c.fNumber, 4)));
+    const eyepieceFocal = Math.max(1, finite(c.eyepieceFocal, 55));
+    const nvFocal = Math.max(1, finite(c.nvFocal, 26));
+    const nvF = Math.max(0.51, finite(c.nvF, 1.2));
+    const fNumber = Math.max(0.51, finite(c.fNumber, 1.2));
+    const afocal = position.startsWith(&#x27;afocal&#x27;) || c.afocal === true;
+    const finalF = afocal ? Math.max(nvF, telescopeF * nvFocal / eyepieceFocal) : fNumber;
+    // A downstream NV entrance pupil can clip an oversized telescope exit pupil.
+    // In that case only the retained central part of the telescope pupil reaches
+    // the image, including photons filtered BEFORE the eyepiece.
+    const effectiveEntranceF = afocal ? Math.max(telescopeF, eyepieceFocal / (nvFocal / nvF)) : fNumber;
+    let mode = &#x27;cone&#x27;;
+    let localF = fNumber;
+    let angleSemantics = &#x27;chief-ray angle at the filter; zero for ideal image-space telecentric rear placement&#x27;;
+    if (position === &#x27;front&#x27; || position === &#x27;afocalBetween&#x27; || position === &#x27;afocalFront&#x27;) {
+      mode = &#x27;parallel&#x27;;
+      localF = Infinity;
+      angleSemantics = position === &#x27;afocalBetween&#x27;
+        ? &#x27;eyepiece OUTPUT angle at the NV objective; NOT true sky angle&#x27;
+        : &#x27;true sky angle relative to the front-filter normal&#x27;;
+    } else if (position === &#x27;afocalBefore&#x27;) localF = effectiveEntranceF;
+    else if (position === &#x27;afocalAfter&#x27;) localF = finalF;
+    else if (position === &#x27;ideal&#x27;) { mode = &#x27;ideal&#x27;; localF = Infinity; }
+    if (c.mode) mode = c.mode;
+    if (c.beamF !== undefined) {
+      localF = Number(c.beamF);
+      if (c.mode !== &#x27;ideal&#x27;) mode = Number.isFinite(localF) ? &#x27;cone&#x27; : &#x27;parallel&#x27;;
+    }
+    if (mode === &#x27;cone&#x27; &amp;&amp; !(localF &gt; 0.5)) throw new RangeError(&#x27;beamF must be greater than 0.5.&#x27;);
+    const sensorRadius = Math.max(0, finite(c.sensorRadius, 9));
+    const focalLength = Math.max(0.01, finite(c.focalLength, 25));
+    const defaultEdge = Math.atan(sensorRadius / (position === &#x27;afocalBetween&#x27; ? nvFocal : focalLength)) / DEG;
+    return {
+      position, mode, beamF: localF, filterFNumber: localF,
+      imageFNumber: finalF, finalF, effectiveEntranceF, telescopeF, eyepieceFocal, nvFocal, nvF,
+      edgeAngleDeg: finite(c.edgeAngleDeg, defaultEdge),
+      angleSemantics,
+      pupilFilledDiameter: afocal ? Math.min(nvFocal / nvF, eyepieceFocal / telescopeF) : null
+    };
+  }
+
+  function coneQ(fNumber, nEff, sampleCount) {
+    const n = Math.max(32, Math.round(sampleCount || 192));
+    const a = 1 / (4 * fNumber * fNumber * nEff * nEff);
+    const q = new Float64Array(n);
+    for (let i = 0; i &lt; n; i++) q[i] = Math.sqrt(1 - a * (i + 0.5) / n);
+    return q;
+  }
+
+  // width: FWHM in nm. Offset is the positive RED shift of the normal-incidence
+  // passband. designF is intentionally independent of the actual optical beam.
+  function optimizedOffset(width, designF, lineNm, nEff) {
+    width = Math.max(0.01, finite(width, 7));
+    designF = Math.max(0.51, finite(designF, 2));
+    lineNm = finite(lineNm, 656.28);
+    nEff = Math.max(1.01, finite(nEff, 2));
+    const key = [width, designF, lineNm, nEff].join(&#x27;|&#x27;);
+    if (offsetCache.has(key)) return offsetCache.get(key);
+    const q = coneQ(designF, nEff, 384);
+    const maxOffset = lineNm * (1 / Math.sqrt(1 - 1 / (4 * designF * designF * nEff * nEff)) - 1);
+    function merit(offset) {
+      let sum = 0;
+      for (let i = 0; i &lt; q.length; i++) sum += profile(lineNm / q[i] - lineNm - offset, width);
+      return sum / q.length;
+    }
+    // Coarse search followed by local golden-section refinement avoids any
+    // assumption that a midpoint shift maximizes the actual pupil average.
+    const steps = 80;
+    let best = 0, bestValue = -1;
+    for (let i = 0; i &lt;= steps; i++) {
+      const x = maxOffset * i / steps, y = merit(x);
+      if (y &gt; bestValue) { best = x; bestValue = y; }
+    }
+    let a = Math.max(0, best - maxOffset / steps);
+    let b = Math.min(maxOffset, best + maxOffset / steps);
+    const ratio = (Math.sqrt(5) - 1) / 2;
+    let x1 = b - ratio * (b - a), x2 = a + ratio * (b - a);
+    let y1 = merit(x1), y2 = merit(x2);
+    for (let i = 0; i &lt; 38; i++) {
+      if (y1 &lt; y2) { a = x1; x1 = x2; y1 = y2; x2 = a + ratio * (b - a); y2 = merit(x2); }
+      else { b = x2; x2 = x1; y2 = y1; x1 = b - ratio * (b - a); y1 = merit(x1); }
+    }
+    const result = (a + b) / 2;
+    offsetCache.set(key, result);
+    return result;
+  }
+
+  function compile(config) {
+    const c = config || {};
+    const geo = geometry(c);
+    const width = Math.max(0.01, finite(c.width, 7));
+    const nEff = Math.max(1.01, finite(c.nEff, 2));
+    const designF = Math.max(0.51, finite(c.designF, 2));
+    const kind = String(c.filterKind || c.kind || &#x27;ha&#x27;).toLowerCase();
+    const mainLines = kind === &#x27;dual&#x27; || kind === &#x27;dualband&#x27; ? [656.28, 500.7]
+      : kind === &#x27;oiii&#x27; || kind === &#x27;o3&#x27; ? [500.7] : [656.28];
+    const bands = mainLines.map((line, index) =&gt; {
+      const offset = c.offsets &amp;&amp; c.offsets[index] !== undefined ? Number(c.offsets[index])
+        : c.offset !== undefined ? Number(c.offset)
+        : c.optimized === true ? optimizedOffset(width, designF, line, nEff) : 0;
+      return { line, center: line + offset, offset, width };
+    });
+    const rawLines = c.lines || DEFAULT_LINES;
+    const lines = rawLines.map(line =&gt; ({
+      name: line.name || line.label || String(line.wavelength || line.nm),
+      wavelength: finite(line.wavelength, finite(line.nm, 656.28)),
+      weight: Math.max(0, finite(line.weight, finite(line.intensity, 1)))
+    }));
+    return { config: c, geo, width, nEff, designF, kind, bands, lines };
+  }
+
+  function incidenceQ(model, angleDeg) {
+    const { config: c, geo, nEff } = model;
+    if (geo.mode === &#x27;ideal&#x27;) return new Float64Array([1]);
+    const alpha = finite(angleDeg, finite(c.angleDeg, 0)) * DEG;
+    if (Math.abs(alpha) &gt;= Math.PI / 2) throw new RangeError(&#x27;Filter incidence angle must be less than 90 degrees.&#x27;);
+    if (geo.mode === &#x27;parallel&#x27;) {
+      return new Float64Array([Math.sqrt(1 - Math.sin(alpha) ** 2 / (nEff * nEff))]);
+    }
+    if (Math.abs(alpha) &lt; 1e-12) return coneQ(geo.beamF, nEff, c.pupilSamples);
+    // Optional tilted cone. Default rear model uses angleDeg = 0 everywhere.
+    const radialCount = Math.max(24, Math.round(finite(c.pupilSamples, 96)));
+    const azimuthCount = Math.max(12, Math.round(finite(c.azimuthSamples, 24)));
+    const qs = new Float64Array(radialCount * azimuthCount);
+    let k = 0;
+    for (let i = 0; i &lt; radialCount; i++) {
+      const sinTheta = Math.sqrt((i + 0.5) / radialCount) / (2 * geo.beamF);
+      const cosTheta = Math.sqrt(1 - sinTheta * sinTheta);
+      for (let j = 0; j &lt; azimuthCount; j++) {
+        const phi = 2 * Math.PI * (j + 0.5) / azimuthCount;
+        const cosTotal = Math.cos(alpha) * cosTheta + Math.sin(alpha) * sinTheta * Math.cos(phi);
+        qs[k++] = Math.sqrt(1 - (1 - cosTotal * cosTotal) / (nEff * nEff));
+      }
+    }
+    return qs;
+  }
+
+  function throughputAtQ(wavelength, bands, qs, nominal) {
+    let sum = 0;
+    for (let i = 0; i &lt; qs.length; i++) {
+      let atAngle = 0;
+      for (const band of bands) {
+        atAngle += profile(wavelength / qs[i] - (nominal ? band.line : band.center), band.width);
+      }
+      // The two supported bands are widely separated, so overlap is negligible.
+      sum += Math.min(1, atAngle);
+    }
+    return sum / qs.length;
+  }
+
+  function evaluateModel(model, angleDeg) {
+    const qs = incidenceQ(model, angleDeg);
+    let qMean = 0;
+    for (const q of qs) qMean += q;
+    qMean /= qs.length;
+    let totalWeight = 0, lineSignal = 0, nominalLineSignal = 0;
+    let targetWeight = 0, targetSignal = 0;
+    const perLine = model.lines.map(line =&gt; {
+      const transmission = throughputAtQ(line.wavelength, model.bands, qs, false);
+      const nominalTransmission = throughputAtQ(line.wavelength, model.bands, [1], true);
+      const signal = line.weight * transmission;
+      lineSignal += signal;
+      nominalLineSignal += line.weight * nominalTransmission;
+      totalWeight += line.weight;
+      const isMain = model.bands.some(band =&gt; Math.abs(band.line - line.wavelength) &lt; 0.15);
+      if (isMain) { targetWeight += line.weight; targetSignal += signal; }
+      return { ...line, transmission, nominalTransmission, signal };
+    });
+    const equivalentWidth = qMean * model.bands.reduce((sum, band) =&gt; sum + EW_FACTOR * band.width, 0);
+    const nominalEquivalentWidth = model.bands.reduce((sum, band) =&gt; sum + EW_FACTOR * band.width, 0);
+    const imageF = model.geo.imageFNumber;
+    const targetLineFraction = targetWeight &gt; 0 ? targetSignal / targetWeight
+      : model.bands.reduce((sum, band) =&gt; sum + throughputAtQ(band.line, model.bands, qs, false), 0) / model.bands.length;
+    return {
+      angleDeg: finite(angleDeg, finite(model.config.angleDeg, 0)),
+      geometry: model.geo,
+      bands: model.bands,
+      perLine,
+      lineSignal,
+      totalLines: lineSignal,
+      allLineSignal: lineSignal,
+      lineFraction: totalWeight ? lineSignal / totalWeight : 0,
+      allLineFraction: totalWeight ? lineSignal / totalWeight : 0,
+      targetLineFraction,
+      nominalLineSignal,
+      nominalRatio: nominalLineSignal &gt; 0 ? lineSignal / nominalLineSignal : 0,
+      equivalentWidth,
+      continuumEquivalentBandwidth: equivalentWidth,
+      nominalEquivalentWidth,
+      continuumFraction: equivalentWidth / nominalEquivalentWidth,
+      lineToContinuum: lineSignal / equivalentWidth,
+      contrastRatioToNominal: nominalLineSignal &gt; 0 ? (lineSignal / equivalentWidth) / (nominalLineSignal / nominalEquivalentWidth) : 0,
+      imageLineBrightness: lineSignal / (imageF * imageF),
+      imageContinuumBrightnessPerUnitSpectralDensity: equivalentWidth / (imageF * imageF),
+      meanQ: qMean
+    };
+  }
+
+  function evaluate(config) {
+    return evaluateModel(compile(config));
+  }
+
+  function transmission(wavelength, config) {
+    const model = compile(config);
+    return throughputAtQ(wavelength, model.bands, incidenceQ(model), false);
+  }
+
+  // A reusable wavelength sampler avoids repeated offset optimization and pupil
+  // construction when plotting a transmission curve.
+  function createSampler(config) {
+    const model = compile(config);
+    const qs = incidenceQ(model);
+    const fn = wavelength =&gt; throughputAtQ(wavelength, model.bands, qs, false);
+    fn.bands = model.bands;
+    fn.geometry = model.geo;
+    return fn;
+  }
+
+  // LUT coordinate is incidence CHIEF-RAY ANGLE IN DEGREES, uniform 0..maxAngleDeg.
+  // For front placement this is true sky angle; for afocalBetween it is the
+  // magnified output angle. Rear optics are telecentric when maxAngleDeg = 0.
+  // Callers choose where their target lies within this angular coordinate.
+  function radialProfile(config, options) {
+    const model = compile(config);
+    const opts = typeof options === &#x27;number&#x27; ? { bins: options } : (options || {});
+    const bins = Math.max(2, Math.round(finite(opts.bins, 256)));
+    const maxAngleDeg = Math.max(0, finite(opts.maxAngleDeg,
+      model.geo.mode === &#x27;cone&#x27; || model.geo.mode === &#x27;ideal&#x27; ? 0 : model.geo.edgeAngleDeg));
+    const names = [&#x27;angleDeg&#x27;, &#x27;lineSignal&#x27;, &#x27;lineFraction&#x27;, &#x27;targetLineFraction&#x27;, &#x27;nominalRatio&#x27;,
+      &#x27;equivalentWidth&#x27;, &#x27;contrastRatioToNominal&#x27;, &#x27;imageLineBrightness&#x27;,
+      &#x27;imageContinuumBrightnessPerUnitSpectralDensity&#x27;];
+    const output = { bins, maxAngleDeg, geometry: model.geo, bands: model.bands };
+    for (const name of names) output[name] = new Float32Array(bins);
+    output.perLine = model.lines.map(line =&gt; ({ ...line, transmission: new Float32Array(bins) }));
+    let constant = null;
+    for (let i = 0; i &lt; bins; i++) {
+      const angleDeg = maxAngleDeg * i / (bins - 1);
+      const result = constant || evaluateModel(model, angleDeg);
+      if (maxAngleDeg === 0) constant = result;
+      for (const name of names) output[name][i] = result[name];
+      for (let j = 0; j &lt; model.lines.length; j++) output.perLine[j].transmission[i] = result.perLine[j].transmission;
+    }
+    output.totalLines = output.lineSignal;
+    output.allLineSignal = output.lineSignal;
+    output.continuumEquivalentBandwidth = output.equivalentWidth;
+    output.nominalLineSignal = evaluateModel(model, 0).nominalLineSignal;
+    return output;
+  }
+
+  function lookup(profileData, name, angleDeg) {
+    const array = profileData[name];
+    if (!array) throw new Error(&#x27;Unknown profile quantity: &#x27; + name);
+    if (profileData.maxAngleDeg === 0) return array[0];
+    const x = Math.min(array.length - 1, Math.max(0, Math.abs(angleDeg) / profileData.maxAngleDeg * (array.length - 1)));
+    const i = Math.floor(x), j = Math.min(i + 1, array.length - 1), t = x - i;
+    return array[i] * (1 - t) + array[j] * t;
+  }
+
+  const api = {
+    version: &#x27;1.0.0&#x27;, DEFAULT_LINES, EW_FACTOR,
+    profile, geometry, optimizedOffset, transmission, createSampler,
+    evaluate, radialProfile, lookup
+  };
+  root.M42Optics = api;
+  if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) module.exports = api;
+})(typeof window !== &#x27;undefined&#x27; ? window : globalThis);
+
+&lt;/script&gt;
+&lt;script&gt;
+/* Rectilinear ideal imaging on an 18 mm circular photocathode.
+ * The M42 template always spans 0.5005 degrees on the sky.
+ * The afocal mapping uses ideal paraxial angular magnification in tangent space.
+ */
+(function(root){
+  &#x27;use strict&#x27;;
+  const DEG=Math.PI/180,RADIUS=9,FIELD=.5005;
+  function geometry(c){
+    const afocal=c.position.startsWith(&#x27;afocal&#x27;);
+    const magnification=afocal?600/c.eyepieceFocal:1;
+    const focal=afocal?magnification*c.nvFocal:c.focalLength;
+    const angleFocal=afocal?c.nvFocal:focal;
+    return {afocal,magnification,focal,angleFocal,radius:RADIUS,
+      halfSky:Math.atan(RADIUS/focal)/DEG,halfControl:Math.atan(RADIUS/angleFocal)/DEG};
+  }
+  function projection(c){
+    const g=geometry(c),a=(c.targetAngle||0)*DEG;
+    const sky=g.afocal?Math.atan(Math.tan(a)/g.magnification):a;
+    const sin=Math.sin(sky),cos=Math.cos(sky);
+    return function(dxDeg,dyDeg){
+      const u=Math.tan(dxDeg*DEG),v=Math.tan(dyDeg*DEG),z=cos-sin*u;
+      const x=g.focal*(cos*u+sin)/z,y=g.focal*v/z,r=Math.hypot(x,y);
+      return {x,y,r,inside:z&gt;0&amp;&amp;r&lt;=RADIUS,angle:Math.atan(r/g.angleFocal)/DEG};
+    };
+  }
+  function target(c){
+    const project=projection(c),center=project(0,0);
+    const corners=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([x,y])=&gt;project(x*FIELD/2,y*FIELD/2));
+    return {center,corners};
+  }
+  function unprojection(c){
+    const g=geometry(c),a=(c.targetAngle||0)*DEG;
+    const sky=g.afocal?Math.atan(Math.tan(a)/g.magnification):a;
+    const sin=Math.sin(sky),cos=Math.cos(sky);
+    return function(x,y){
+      const u=x/g.focal,v=y/g.focal,z=sin*u+cos;
+      return {dx:Math.atan((cos*u-sin)/z)/DEG,dy:Math.atan(v/z)/DEG};
+    };
+  }
+  const api={geometry,projection,unprojection,target,FIELD,RADIUS};
+  root.M42Field=api;
+  if(typeof module!==&#x27;undefined&#x27;&amp;&amp;module.exports)module.exports=api;
+})(typeof window!==&#x27;undefined&#x27;?window:globalThis);
+
+&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  &#x27;use strict&#x27;;
+  const root=document.getElementById(&#x27;m42-filter-lab&#x27;);
+  const help={
+    focal:[&#x27;焦距与焦比：两个不同的量&#x27;,&#x27;25 mm、85 mm 等是焦距。对同一块18 mm阴极，焦距短就能收进更宽的天区；焦距长则把同一天体成像得更大，但看到的范围更窄。&#x27;,&#x27;这里可选16、25、35、50、85、135、200、300 mm：都用同一个焦比滑块，比较的是理想镜头，未指定品牌或真实产品。比如25 mm F1.2与85 mm F1.2，焦距不同，焦比相同。&#x27;,&#x27;不同焦距模式中，左右分别选焦距；前后置和普通/优化模式中，一个焦距同时用于两边。无焦继续使用600 mm望远镜和26 mm夜视物镜，焦距对比选项暂不可用。&#x27;,&#x27;相同天区方向，在两片前置滤镜上的入射角相同；相同画面边缘，在短焦镜头里却对应更大的天区角度。差别主要来自“能看多宽”。&#x27;,&#x27;同焦比下，同一天体的理想面亮度不会只因换焦距而增加；长焦把像放大，会覆盖更多面积。本演示不加入分辨率、像差或噪声变化。&#x27;],
+    fieldmap:[&#x27;全视场圆图看什么？&#x27;,&#x27;每个圆都代表直径18 mm的完整夜视阴极。圆的屏幕大小相同，但对应的天区大小取决于焦距：25 mm约39.6°，85 mm约12.1°。&#x27;,&#x27;选择“主线透过分布”时，圆内展示透过率，不是把M42照片铺满整个天空。灰度使用同一线性刻度：黑色0%，白色100%。它不随“固定曝光/统一天空亮度”改变。&#x27;,&#x27;Hα看656.3 nm主线，OIII看500.7 nm主线；双窄按输入强度对两条主线加权。中心和边缘百分比是这两处的透过率，不能把白色区域直接解释成真实夜视器一定能看见的范围。下方M42特写还包含邻近谱线，因此特写最亮的角度不一定等于圆图主线最亮的角度。&#x27;,&#x27;前置普通窄带常出现中心明亮、外圈变暗；预偏置优化片有时出现中间较暗、某一圈最亮。后置在本模型中为远心光锥，所以整个圆内的透过率均匀。&#x27;,&#x27;小框按真实角尺度标出M42特写的范围。它很小是正常的：特写只有约半度宽。框移到阴极之外时，相应镜头看不到这片天区。&#x27;,&#x27;选择“M42真实取景”时，把约半度的M42特写按实际角大小放进整个视场，周围仅用均匀天空填充；没有添加这张特写以外的星空数据。这一模式跟随曝光显示设置。25 mm里M42很小是正常的，可在下方看放大特写。&#x27;,&#x27;假设前置滤镜口径足够大、没有机械遮挡；不另外加入镜头暗角。&#x27;],
+    crop:[&#x27;为什么下面两张星云看起来一样大？&#x27;,&#x27;下面是同一块约半度天区的放大特写，特意放大到相同屏幕大小，方便比较滤镜造成的明暗损失；它不是整块阴极的完整成像。&#x27;,&#x27;焦距造成的实际大小差异，在上方圆图的小框中按比例表示。长焦的小框更大，覆盖的整体天区却更小。&#x27;,&#x27;相同焦比、同一片前置滤镜、同一个天区方向，放大后的两张特写可能相同。这是模型应有的结果；焦距差异主要体现在整体视场和能否装下目标。&#x27;,&#x27;超出18 mm阴极的部分留空；完全超出时显示“此天区超出视场”，数值显示横杠，不把它误当成滤镜透过率0%。部分落入视场时，对比度只统计可见部分。&#x27;],
+    intro:[&#x27;这个实验在看什么？&#x27;,&#x27;M42 就是猎户座大星云。这里借用它的外形，演示滤镜换位置、换带宽或换焦比后，星云相对天空背景会怎样变化。&#x27;,&#x27;星云发出的某些颜色特别强，窄带滤镜就像只为这些颜色开的小门。光斜着碰到滤镜时，这扇门会挪位置，原本想保留的星云光也可能被挡住。&#x27;,&#x27;图像是理想模型演示，不是不同设备实拍。这里只比较滤镜与光束角度；真实夜视器的噪声和灵敏度等没有加入。&#x27;],
+    f:[&#x27;焦比 F：数字越小，光锥越宽&#x27;,&#x27;焦比 = 镜头焦距 ÷ 有效口径。例如焦距 100 mm、口径 50 mm，就是 F2。所谓“快镜”，是指 F 后面的数字小，通常能更快收集到足够的成像光量，不是光传播得更快。&#x27;,&#x27;F0.95、F1.2、F1.4 都是很快的焦比；F2.8 相比之下光锥更窄。镜头后的滤镜会接到一整束不同角度的光，光锥越宽，角度偏移通常越明显。&#x27;,&#x27;镜头前，画面中心天体的光还没有汇聚，基本正着穿过滤镜；这时减小焦比本身不会增加它的入射角。无焦模式里，这个滑块调的是望远镜焦比，最终成像焦比还取决于目镜和夜视物镜。&#x27;],
+    position:[&#x27;五种位置分别在哪里？&#x27;,&#x27;直焦·镜头前：天体 → 滤镜 → 镜头 → 像面。中心天体的光近乎正入射；越偏离画面中心，光束越倾斜。&#x27;,&#x27;直焦·镜头后：天体 → 镜头 → 滤镜 → 像面。镜头已把光变成汇聚的光锥，即使画面中心，也有大量斜光穿过滤镜。这里用理想远心模型，使各处的损失相同。&#x27;,&#x27;“无焦”是保留望远镜目镜，也保留夜视仪物镜，让目镜出来的光再进入夜视仪。它不是完全没有焦点：望远镜内部先成一次像，目镜再把光变成近似平行束。&#x27;,&#x27;无焦·目镜入光端：滤镜在目镜前、望远镜汇聚光束中，常见做法是装在目镜鼻端。这里的光锥由望远镜和有效光瞳决定。&#x27;,&#x27;无焦·目镜与夜视镜头之间：滤镜接到目镜送出的近似平行光。同一个天体的光近乎平行，但视场边缘天体的整束光会斜着穿过去；角度被目镜放大过。&#x27;,&#x27;无焦·夜视镜头后：滤镜在夜视物镜之后、光电阴极之前。光又被汇聚成光锥，要按最终有效焦比计算。&#x27;],
+    band:[&#x27;波段：想留下哪一种星云光？&#x27;,&#x27;Hα（读作 H alpha）：氢原子发出的 656.3 nm 红光，许多发射星云在这里很亮。&#x27;,&#x27;OIII（常读作 O 三）：失去两个电子的氧发出的光。这里以 500.7 nm 蓝绿光为通带中心，也计算附近 495.9 nm 谱线。&#x27;,&#x27;双窄：同时开两扇小门，一扇给 Hα，一扇给 OIII。带宽选 3 nm 时，每一扇门各为 3 nm；不是两扇加起来 3 nm。&#x27;,&#x27;为了只看明暗和对比，图像统一显示为灰度；灰色不代表星云原来发的是白光。&#x27;],
+    width:[&#x27;带宽 nm：滤镜这扇门有多宽？&#x27;,&#x27;nm 是纳米，这里描述光的波长范围，不是滤镜玻璃的厚度。标称带宽通常指半高全宽 FWHM：透过率降到峰值一半时，两侧波长之间的间隔。边缘并不是一道完全开或关的直墙。&#x27;,&#x27;3 nm：门最窄，通常挡掉更多连续天空背景；但主线稍微偏出通带，就可能损失很大。&#x27;,&#x27;5 nm：比 3 nm 宽一些，给波段偏移多留了一点余地，也多放进一些天空背景。&#x27;,&#x27;7 nm：进一步增加容错空间；有些邻近谱线也可能被一起放进来。&#x27;,&#x27;10 nm：比 7 nm 多留一些余地，通常更耐偏移，也放进更多连续背景。&#x27;,&#x27;12 nm：比 10 nm 再宽一点，可用来观察多保留主线和多放进背景之间的取舍。&#x27;,&#x27;15 nm：主线较不容易被偏移挡掉，但邻近谱线和背景也更容易进来。&#x27;,&#x27;20 nm：通带继续加宽；画面可能更亮，星云与天空之间的反差却未必更大。&#x27;,&#x27;25 nm：通常更耐角度偏移；如果较窄通带已经能留下主线，再加宽的收益可能主要是背景变亮。&#x27;,&#x27;30 nm：这里最宽的选择，给偏移最多余地，也放进最多连续背景。“更宽”不等于画面必然更好，要一起看主线保留和背景。&#x27;,&#x27;所有档位沿用同一理想通带形状；双窄的两扇通带各为所选带宽。较宽通带可能接纳更多谱线，本演示仍只计算已列出的六条谱线和连续背景，不代表某款商品的完整实测光谱。&#x27;],
+    design:[&#x27;设计焦比：优化版事先针对哪种光锥？&#x27;,&#x27;普通版在正面入射时，就把通带对准目标谱线。优化版则先把通带往较长波长方向挪一点，等斜光让它往较短波长移动时，再尽量对回来。&#x27;,&#x27;按 F0.95 / F1.2 / F1.4 设计：针对很宽的快镜光锥。按 F2 / F2.8 / F4 设计：分别针对逐渐变窄的光锥。程序为所选设计焦比寻找平均主线透过率最高的预偏置。&#x27;,&#x27;它不会自动跟随上面的实际焦比。比如镜头实际 F1.2、优化选 F2，就是在检查一片“按 F2 做的滤镜”用在 F1.2 上的效果。这个选项只改变优化版：普通/优化对比时改变右图，前后置优化或不同焦距优化对比时同时改变两图。&#x27;,&#x27;一片滤镜不能同时完美补偿所有入射角。因此优化不保证恢复 100%，也不保证在前置正入射时优于普通版。这里不是任何厂家的实测滤镜。&#x27;],
+    display:[&#x27;曝光与拉伸：怎样公平地看两幅图？&#x27;,&#x27;固定曝光与拉伸：两边使用相同的收光时间和明暗显示规则。既能看到星云对比变化，也能看到实际保留的光量变化；没有分别把每张图自动调亮。&#x27;,&#x27;“拉伸”是把很暗到很亮的信号压缩到屏幕能显示的亮度范围，便于看到暗部。这里两边始终用同一条拉伸曲线。&#x27;,&#x27;统一天空亮度：额外调整显示增益，让两边的天空同样亮，便于专看星云有多突出。它只是把显示调亮或调暗，不会找回被滤镜挡掉的光子。&#x27;,&#x27;切换显示模式不会改变下方的对比保留率和主线透过率；这些百分比来自光学计算。&#x27;],
+    eyepiece:[&#x27;55 / 67 mm 目镜有什么区别？&#x27;,&#x27;这里的 mm 指目镜焦距。无焦系统固定使用 26 mm F1.2 夜视物镜；换目镜会改变倍率、出瞳大小，以及最终成像焦比。&#x27;,&#x27;55 mm 目镜：倍率稍高，最终焦比通常较大。比如 F4 望远镜接 55 mm，最终约 F1.89。&#x27;,&#x27;67 mm 目镜：倍率稍低，最终焦比通常较小。同一 F4 望远镜接 67 mm，最终约 F1.55。&#x27;,&#x27;如果目镜送出的光束比夜视物镜入口还宽，多余部分进不去；最终焦比不会因此快过夜视物镜自身的 F1.2。目镜前滤镜遇到的局部光锥，也不能直接当作最终焦比。&#x27;],
+    angle:[&#x27;离轴角：目标离画面正中心有多远？&#x27;,&#x27;0° 表示把目标放在系统正中心。角度越大，目标越偏向一侧，它送来的整束平行光就越斜。&#x27;,&#x27;直焦前置时，滑块表示真实天区方向相对镜头正前方的夹角；无焦两镜之间时，表示经过目镜放大后的输出角度，二者不是同一个数。&#x27;,&#x27;图中始终是 M42 的特写。滑块是在移动这块特写位于视场中的位置，不是把整片星云拉伸到几十度宽。&#x27;,&#x27;前置也不是“只有边缘一圈才偏移”：偏移随离轴角逐渐增加。后置则是在每一个场点都有光锥；这里假设理想远心，让它们受到相同影响。&#x27;],
+    beam:[&#x27;平行束、光锥、半角、最终 F&#x27;,&#x27;平行束：同一个天体来的光，走向近乎一致；整束光仍可能斜着穿过滤镜。&#x27;,&#x27;光锥：镜头把光汇聚到一点，外形像一个锥体。里面有近乎正入射的光，也有角度较大的斜光。&#x27;,&#x27;半角：光锥轴线和最外侧光线之间的夹角。滤镜光锥 F 指滤镜所在位置的有效焦比，不一定等于整个系统的最终焦比。&#x27;,&#x27;最终 F：最后成像那一束光的有效焦比，用来计算相同曝光下的像面亮度。无焦系统前段和后段的光锥宽度可以不同。&#x27;,&#x27;张角：从当前位置看，这块 M42 特写覆盖多大角度；无焦时经过目镜，张角会放大。&#x27;],
+    preview:[&#x27;不同预览，分别比较什么？&#x27;,&#x27;不同焦距·普通/优化：固定滤镜位置与设计，左右用不同焦距，默认25 mm和85 mm；焦比相同。上方看全视场，下方看同一天区的放大特写。&#x27;,&#x27;前置 vs 后置·普通滤镜：两边用同一片未做快镜预补偿的滤镜，只改变放置位置；直焦时左图镜头前、右图镜头后。&#x27;,&#x27;前置 vs 后置·优化滤镜：两边用同一片按选定设计焦比预补偿的滤镜，仍然只改变位置。优化片放在前面不一定更好，因为它本来是针对斜光设计的。&#x27;,&#x27;普通 vs 优化·所选位置：回到原来的比较方式，固定放置位置，左边普通、右边优化。&#x27;,&#x27;两边使用相同最终焦比、相同曝光与同一显示规则。前置可调目标离轴角；后置沿用理想远心模型，所以不会随天区位置增加额外偏移。&#x27;,&#x27;无焦时：选“目镜入光端”，比较目镜前和夜视物镜后；选另外两个无焦位置，比较夜视物镜前后。目镜入光端已在望远镜之后，也有汇聚光锥，不能把它当作直焦镜头前的平行光。&#x27;],
+    compare:[&#x27;一张图，两种条件&#x27;,&#x27;先看图上方的左右标题：不同焦距模式中，左右各代表一支镜头；前后置模式中，左边是较前面的滤镜位置，右边是后置；普通/优化模式中，左边普通、右边优化。两边对应同一块星云。&#x27;,&#x27;拖动分界线，就能在相同位置来回比较。滑块移到最右边看完整左图，移到最左边看完整右图。这里只改变显示范围，不改变计算结果。&#x27;],
+    normal:[&#x27;普通滤镜&#x27;,&#x27;这里指通带在正入射时对准目标主线、没有做快焦比预偏置的理想滤镜。“普通”只是模型中的设计方式，不代表做工差或某个品牌。&#x27;],
+    optimized:[&#x27;快镜优化滤镜&#x27;,&#x27;在制造设计时先把通带向红侧挪一点，让斜入射造成的蓝移把它拉回目标谱线附近。&#x27;,&#x27;优化针对的是选定光锥的平均效果，不能让每一条光线都恰好通过，也不能无限补救极快焦比。&#x27;],
+    contrast:[&#x27;对比度保留：星云还突出多少？&#x27;,&#x27;先算星云信号 ÷ 天空背景，再与“同样带宽、完全没有角度偏移”的理想情况比较。这里的星云信号包括谱线和少量星云连续谱。&#x27;,&#x27;例如 40% 表示星云相对天空的突出程度，只剩这个理想参考的四成；它不是说整幅画面的亮度只剩四成。&#x27;,&#x27;背景有时会和星云一起变暗，所以单看图像亮不亮，不等于判断对比度。这个数也不是信噪比，不能直接说明真实夜视仪中能看清多少细节。&#x27;,&#x27;偶尔超过 100% 并不自动表示算错：通带移动后，可能多接收某条邻近谱线。不同带宽各有自己的 100% 参考，不能只凭保留百分比判断哪种带宽的绝对对比度更高。&#x27;],
+    throughput:[&#x27;主线透过：想要的光留下多少？&#x27;,&#x27;看当前选中天区的中心位置，目标主谱线的光有多少穿过滤镜。这里的中心不是一定指镜头正前方；全视场圆图另外列出光轴中心和阴极边缘。Hα 看 656.3 nm；OIII 看 500.7 nm；双窄则对两条主线按输入强度加权平均。&#x27;,&#x27;例如 25% 表示这类光子约留下四分之一。这个百分比不包含天空，也不等于整个画面、所有谱线和星光的总透过率。&#x27;,&#x27;光路动画若只演示 Hα，就只显示 Hα 的比例；双窄图像的主线百分比还包括 OIII，所以两处可能不同。&#x27;],
+    reference:[&#x27;100% 是什么参考？&#x27;,&#x27;参考是一片同带宽、同通带形状的普通理想滤镜，但人为关掉入射角引起的波段偏移。它不是“完全不装滤镜”的照片。&#x27;,&#x27;在 3–30 nm 的各档位之间切换时，参考也跟着更换。保留率便于看某种滤镜受到多少损失；跨带宽比较时还要结合图像，建议用“统一天空亮度”。&#x27;],
+    raymode:[&#x27;两种动画，分别回答什么？&#x27;,&#x27;不同焦距模式下，第一个动画选项改为跟随两图，同一天区方向对应相同前置入射角。线段不按镜头实际焦距比例画；实际视场与目标大小见圆图。&#x27;,&#x27;前置 vs 后置：当图像也选前后置对比时，动画与图像同步，上方对应左图，下方对应右图，包括所选普通/优化设计、离轴角和无焦位置。&#x27;,&#x27;当图像选普通 vs 优化时，前后置动画仍单独演示中心天体、同一只镜头和普通滤镜，焦比取当前最终焦比。动画上方会注明具体条件。&#x27;,&#x27;当前设置·普通 vs 优化：固定在上面选定的位置，上方普通、下方优化。无焦时会画出望远镜、目镜、夜视物镜和光电阴极。&#x27;],
+    rays:[&#x27;怎样看这束光？&#x27;,&#x27;先看滤镜和物镜的先后顺序：前置滤镜接到的是还没汇聚的光；后置滤镜接到的是已经汇聚、含有多种角度的光。画面中心也有这个区别。&#x27;,&#x27;光点穿过滤镜后，越暗表示这条方向上的主线光越难通过。被大幅挡住的光会在滤镜处变淡；叉号提示主要损失的位置。颜色只区分上下两条演示，不表示光子变了颜色。&#x27;,&#x27;动画是少量代表光线，光线条数不能直接当作光量比例。标出的平均透过率来自对整个圆形光瞳的面积积分。&#x27;,&#x27;光路为非等比例示意，动画速度也不是真实光速。数字入射角来自模型计算，不可用屏幕上的线段斜率测量。播放一次后停止；系统若要求减少动画，则直接显示通过结果。&#x27;],
+    components:[&#x27;物镜、目镜、像面与阴极&#x27;,&#x27;物镜：前方负责收光并成像的镜头。望远镜和夜视仪各自可以有一组物镜。&#x27;,&#x27;目镜：接在望远镜后面的放大光学组；无焦连接中，它把望远镜形成的像变成夜视物镜能接收的近似平行光。&#x27;,&#x27;像面：光最后形成清晰图像的位置，摄影时通常放传感器。&#x27;,&#x27;光电阴极（图中简称阴极）：夜视像管最前面的感光面，把到达的光转换成电子，再由像管放大。NV 是 night vision，也就是夜视。&#x27;],
+    shift:[&#x27;蓝移与红向预补偿&#x27;,&#x27;这里的“蓝移”是滤镜允许通过的波长窗口往短波长方向移动；原来 656.3 nm 的光子不会被滤镜变成蓝色。&#x27;,&#x27;斜光让窗口移动后，固定波长的星云光可能落到窗口边缘甚至外面。窗口越窄，越容易受影响。&#x27;,&#x27;“红向预偏置”或“预补偿”是先把正入射窗口向长波长挪一点，给之后的蓝移留余量。“+2 nm”表示预先往长波长方向挪了 2 nm。&#x27;],
+    coating:[&#x27;膜系、有效折射率、通带形状&#x27;,&#x27;干涉滤镜用多层薄膜控制哪些波长通过；这些薄膜的组合叫膜系。&#x27;,&#x27;n_eff = 2 是把复杂膜系的角度响应压缩成一个参数，叫有效折射率。它不是简单地说整块玻璃折射率为 2，也不是所有滤镜都取这个值。&#x27;,&#x27;四次超高斯是通带曲线的一种数学近似：中间较平、两侧快速但平滑下降。峰值透过 100% 是理想设定，表示在最合适的条件下，不另外扣除材料损耗。&#x27;,&#x27;极快焦比有很大的入射角，真实膜系还可能出现偏振分裂、通带变形等；这里的数值是简化演示，不能替代厂家的实测曲线。&#x27;],
+    telecentric:[&#x27;远心、入瞳与全画面损失&#x27;,&#x27;“像方远心”可理解为：每个画面位置的光锥中心轴，都垂直指向像面。不是锥里的每条光线都垂直。&#x27;,&#x27;所以本模型后置时，各个画面位置看到相同的角度分布，会一起损失主线光。真实镜头如果不是远心，边缘还可能叠加更大的倾斜。&#x27;,&#x27;入瞳是从前面看进去，限制有效收光范围的“入口”。均匀入瞳表示入口每单位面积的照明相同；计算会按面积加权，圆形外圈不能和中心一点同权。&#x27;,&#x27;暗角或渐晕指边缘变暗。这里没有另外叠加机械遮挡等暗角，以免混进别的因素。&#x27;],
+    pupils:[&#x27;无焦系统的光瞳匹配&#x27;,&#x27;望远镜和目镜把光送出时，会形成一小束有一定直径的出瞳；夜视物镜也有自己的入口，即入瞳。把二者对准，就像把水流对准瓶口。&#x27;,&#x27;如果出瞳比夜视入口大，外侧光进不去。模型只统计最终能够参与成像的那部分光，不把被入口截掉的光再算进滤镜效率。&#x27;,&#x27;这里固定望远镜焦距 600 mm、夜视物镜 26 mm F1.2，允许选择 55 或 67 mm 目镜。它是便于比较位置的示例配置。&#x27;],
+    continuum:[&#x27;连续谱与天空背景&#x27;,&#x27;谱线像“集中在几种颜色的亮光”；连续谱则是在许多波长上都有一些光。窄带门越宽，通常就会放进越多连续背景。&#x27;,&#x27;模型把天空连续谱设为每纳米 0.005 个相对光子单位，星云连续谱设为 0.002，再乘星云形态。这些是演示用的相对数值，不对应某个光害等级。&#x27;,&#x27;真实天空还可能有很强的气辉或人造光源谱线，这里没有加入。因此不要把演示中的背景亮度直接换算成实际拍摄地点的曝光时间。&#x27;],
+    weights:[&#x27;谱线权重：每种光有多少？&#x27;,&#x27;把 Hα 的输入光子数设为 1，其余谱线按相对比例给定。比如 OIII 500.7 的 0.62 表示其输入光子数约为 Hα 的 62%。&#x27;,&#x27;Hβ 是氢的另一条谱线；NII 是一次电离氮的谱线。后面的数字表示波长，单位有时写 nm，有时按 Å（埃）写；10 Å = 1 nm。&#x27;,&#x27;这里的比例是演示近似。光谱图上“峰有多高”不等于整条谱线的总光量，准确总量还要对谱线面积积分，并考虑仪器响应。&#x27;],
+    limits:[&#x27;这是理想环境，省略了什么？&#x27;,&#x27;各条谱线共用同一张灰度形态，只改变通过滤镜的量；真实 M42 不同元素的亮区并不完全重合。星点也未单独建模。&#x27;,&#x27;没有加入镜头材料透过损失、像差、探测器对不同颜色的灵敏度、光子噪声或夜视像管噪声。&#x27;,&#x27;因此它适合看位置、角度、带宽和优化之间的因果关系，不用于预报某套设备能看见多少细节，也不用于评价具体品牌。&#x27;],
+    scale:[&#x27;角度、角分和这张特写&#x27;,&#x27;1° 分成 60 个角分，角分写作 ′。这张图覆盖约 30′，也就是半度大小的天区，和月亮的视直径差不多。&#x27;,&#x27;离轴角表示这块天区位于视场的什么方向，不是这块天区本身有多大。无焦连接时，目镜会把它的表观角度放大。&#x27;],
+    snr:[&#x27;信噪比 SNR、像差与偏振&#x27;,&#x27;信噪比是有用信号相对随机起伏有多明显；对比度是星云相对背景有多突出。背景很黑但光子太少，仍可能看不清。这里没有模拟随机噪声，不能输出真实信噪比。&#x27;,&#x27;像差是光学系统没有把光完美汇聚而造成的模糊或变形，例如彗差、色差；本演示把它们排除。&#x27;,&#x27;偏振描述光的振动方向。真实干涉滤镜在大角度下，对不同偏振的响应可能不同；本演示用单一近似曲线，不分开计算。&#x27;]
+  };
+  let active=null,serial=0;
+  function close(slot,focus){
+    if(!slot)return;
+    const trigger=slot._trigger;
+    if(trigger)trigger.setAttribute(&#x27;aria-expanded&#x27;,&#x27;false&#x27;);
+    slot.replaceChildren();slot._trigger=null;
+    if(active===slot)active=null;
+    if(focus&amp;&amp;trigger)trigger.focus();
+  }
+  root.querySelectorAll(&#x27;[data-help]&#x27;).forEach(button=&gt;button.setAttribute(&#x27;aria-expanded&#x27;,&#x27;false&#x27;));
+  root.addEventListener(&#x27;click&#x27;,event=&gt;{
+    const button=event.target.closest(&#x27;button[data-help]&#x27;);
+    if(!button||!root.contains(button))return;
+    const scope=button.closest(&#x27;[data-help-scope]&#x27;),slot=scope&amp;&amp;scope.querySelector(&#x27;[data-help-slot]&#x27;);
+    const entry=help[button.dataset.help];
+    if(!slot||!entry)return;
+    const same=slot._trigger===button;
+    close(slot,false);if(same)return;
+    const panel=document.createElement(&#x27;div&#x27;);panel.className=&#x27;card&#x27;;panel.id=&#x27;m42-help-&#x27;+(++serial);panel.setAttribute(&#x27;role&#x27;,&#x27;region&#x27;);
+    const heading=document.createElement(&#x27;div&#x27;);heading.className=&#x27;help-heading&#x27;;
+    const title=document.createElement(&#x27;strong&#x27;);title.textContent=entry[0];title.id=panel.id+&#x27;-title&#x27;;panel.setAttribute(&#x27;aria-labelledby&#x27;,title.id);
+    const dismiss=document.createElement(&#x27;button&#x27;);dismiss.type=&#x27;button&#x27;;dismiss.className=&#x27;btn btn-ghost&#x27;;dismiss.textContent=&#x27;收起&#x27;;dismiss.setAttribute(&#x27;aria-label&#x27;,&#x27;收起&#x27;+entry[0]);dismiss.addEventListener(&#x27;click&#x27;,()=&gt;close(slot,true));
+    heading.append(title,dismiss);panel.append(heading);
+    entry.slice(1).forEach(text=&gt;{const p=document.createElement(&#x27;p&#x27;);p.textContent=text;panel.append(p);});
+    slot.append(panel);slot._trigger=button;active=slot;
+    button.setAttribute(&#x27;aria-expanded&#x27;,&#x27;true&#x27;);button.setAttribute(&#x27;aria-controls&#x27;,panel.id);
+  });
+  root.addEventListener(&#x27;keydown&#x27;,event=&gt;{if(event.key===&#x27;Escape&#x27;&amp;&amp;active){close(active,true);event.preventDefault();}});
+  const glossary=root.querySelector(&#x27;#m42-glossary-content&#x27;);
+  const glossaryKeys=[&#x27;focal&#x27;,&#x27;fieldmap&#x27;,&#x27;crop&#x27;,&#x27;preview&#x27;,&#x27;normal&#x27;,&#x27;optimized&#x27;,&#x27;f&#x27;,&#x27;width&#x27;,&#x27;band&#x27;,&#x27;position&#x27;,&#x27;angle&#x27;,&#x27;beam&#x27;,&#x27;shift&#x27;,&#x27;design&#x27;,&#x27;contrast&#x27;,&#x27;throughput&#x27;,&#x27;reference&#x27;,&#x27;display&#x27;,&#x27;components&#x27;,&#x27;pupils&#x27;,&#x27;telecentric&#x27;,&#x27;continuum&#x27;,&#x27;weights&#x27;,&#x27;coating&#x27;,&#x27;scale&#x27;,&#x27;snr&#x27;];
+  glossaryKeys.forEach(key=&gt;{
+    const entry=help[key],details=document.createElement(&#x27;details&#x27;),summary=document.createElement(&#x27;summary&#x27;);
+    details.className=&#x27;glossary-item&#x27;;summary.className=&#x27;cursor-interaction&#x27;;summary.textContent=entry[0];details.append(summary);
+    entry.slice(1).forEach(text=&gt;{const p=document.createElement(&#x27;p&#x27;);p.textContent=text;details.append(p);});glossary.append(details);
+  });
+  root.m42HelpKeys=Object.keys(help);
+})();
+
+&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  &#x27;use strict&#x27;;
+  const root=document.getElementById(&#x27;m42-filter-lab&#x27;);
+  const $=id=&gt;root.querySelector(&#x27;#m42-&#x27;+id);
+  const O=window.M42Optics;
+  const F=window.M42Field;
+  const source=&#x27;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gpPVGhpcyBkcmFtYXRpYyBpbWFnZSBvZmZlcnMgYSBwZWVrIGluc2lkZSBhIGNhdmVybiBvZiByb2lsaW5nIGR1c3QgYW5kIGdhcyB3aGVyZSB0aG91c2FuZHMgb2Ygc3RhcnMgYXJlIGZvcm1pbmcuIFRoZSBpbWFnZSwgdGFrZW4gYnkgdGhlIEFkdmFuY2VkIENhbWVyYSBmb3IgU3VydmV5cyAoQUNTKSBhYm9hcmQgTkFTQS9FU0EgSHViYmxlIFNwYWNlIFRlbGVzY29wZSwgcmVwcmVzZW50cyB0aGUgc2hhcnBlc3QgdmlldyBldmVyIHRha2VuIG9mIHRoaXMgcmVnaW9uLCBjYWxsZWQgdGhlIE9yaW9uIE5lYnVsYS4gTW9yZSB0aGFuIDMsMDAwIHN0YXJzIG9mIHZhcmlvdXMgc2l6ZXMgYXBwZWFyIGluIHRoaXMgaW1hZ2UuIFNvbWUgb2YgdGhlbSBoYXZlIG5ldmVyIGJlZW4gc2VlbiBpbiB2aXNpYmxlIGxpZ2h0LiBUaGVzZSBzdGFycyByZXNpZGUgaW4gYSBkcmFtYXRpYyBkdXN0LWFuZC1nYXMgbGFuZHNjYXBlIG9mIHBsYXRlYXVzLCBtb3VudGFpbnMsIGFuZCB2YWxsZXlzIHRoYXQgYXJlIHJlbWluaXNjZW50IG9mIHRoZSBHcmFuZCBDYW55b24uIFRoZSBPcmlvbiBOZWJ1bGEgaXMgYSBwaWN0dXJlIGJvb2sgb2Ygc3RhciBmb3JtYXRpb24sIGZyb20gdGhlIG1hc3NpdmUsIHlvdW5nIHN0YXJzIHRoYXQgYXJlIHNoYXBpbmcgdGhlIG5lYnVsYSB0byB0aGUgcGlsbGFycyBvZiBkZW5zZSBnYXMgdGhhdCBtYXkgYmUgdGhlIGhvbWVzIG9mIGJ1ZGRpbmcgc3RhcnMuIFRoZSBicmlnaHQgY2VudHJhbCByZWdpb24gaXMgdGhlIGhvbWUgb2YgdGhlIGZvdXIgaGVmdGllc3Qgc3RhcnMgaW4gdGhlIG5lYnVsYS4gVGhlIHN0YXJzIGFyZSBjYWxsZWQgdGhlIFRyYXBleml1bSBiZWNhdXNlIHRoZXkgYXJlIGFycmFuZ2VkIGluIGEgdHJhcGV6b2lkIHBhdHRlcm4uIFVsdHJhdmlvbGV0IGxpZ2h0IHVubGVhc2hlZCBieSB0aGVzZSBzdGFycyBpcyBjYXJ2aW5nIGEgY2F2aXR5IGluIHRoZSBuZWJ1bGEgYW5kIGRpc3J1cHRpbmcgdGhlIGdyb3d0aCBvZiBodW5kcmVkcyBvZiBzbWFsbGVyIHN0YXJzLiBMb2NhdGVkIG5lYXIgdGhlIFRyYXBleml1bSBzdGFycyBhcmUgc3RhcnMgc3RpbGwgeW91bmcgZW5vdWdoIHRvIGhhdmUgZGlza3Mgb2YgbWF0ZXJpYWwgZW5jaXJjbGluZyB0aGVtLiBUaGVzZSBkaXNrcyBhcmUgY2FsbGVkIHByb3RvcGxhbmV0YXJ5IGRpc2tzIG9yICJwcm9wbHlkcyIgYW5kIGFyZSB0b28gc21hbGwgdG8gc2VlIGNsZWFybHkgaW4gdGhpcyBpbWFnZS4gVGhlIGRpc2tzIGFyZSB0aGUgYnVpbGRpbmcgYmxvY2tzIG9mIHNvbGFyIHN5c3RlbXMuIFRoZSBicmlnaHQgZ2xvdyBhdCB1cHBlciBsZWZ0IGlzIGZyb20gTTQzLCBhIHNtYWxsIHJlZ2lvbiBiZWluZyBzaGFwZWQgYnkgYSBtYXNzaXZlLCB5b3VuZyBzdGFyJ3MgdWx0cmF2aW9sZXQgbGlnaHQuIEFzdHJvbm9tZXJzIGNhbGwgdGhlIHJlZ2lvbiBhIG1pbmlhdHVyZSBPcmlvbiBOZWJ1bGEgYmVjYXVzZSBvbmx5IG9uZSBzdGFyIGlzIHNjdWxwdGluZyB0aGUgbGFuZHNjYXBlLiBUaGUgT3Jpb24gTmVidWxhIGhhcyBmb3VyIHN1Y2ggc3RhcnMuIE5leHQgdG8gTTQzIGFyZSBkZW5zZSwgZGFyayBwaWxsYXJzIG9mIGR1c3QgYW5kIGdhcyB0aGF0IHBvaW50IHRvd2FyZCB0aGUgVHJhcGV6aXVtLiBUaGVzZSBwaWxsYXJzIGFyZSByZXNpc3RpbmcgZXJvc2lvbiBmcm9tIHRoZSBUcmFwZXppdW0ncyBpbnRlbnNlIHVsdHJhdmlvbGV0IGxpZ2h0LiBUaGUgZ2xvd2luZyByZWdpb24gb24gdGhlIHJpZ2h0IHJldmVhbHMgYXJjcyBhbmQgYnViYmxlcyBmb3JtZWQgd2hlbiBzdGVsbGFyIHdpbmRzIC0gc3RyZWFtcyBvZiBjaGFyZ2VkIHBhcnRpY2xlcyBlamVjdGVkIGZyb20gdGhlIFRyYXBleml1bSBzdGFycyAtIGNvbGxpZGUgd2l0aCBtYXRlcmlhbC4gVGhlIGZhaW50IHJlZCBzdGFycyBuZWFyIHRoZSBib3R0b20gYXJlIHRoZSBteXJpYWQgYnJvd24gZHdhcmZzIHRoYXQgSHViYmxlIHNwaWVkIGZvciB0aGUgZmlyc3QgdGltZSBpbiB0aGUgbmVidWxhIGluIHZpc2libGUgbGlnaHQuIFNvbWV0aW1lcyBjYWxsZWQgImZhaWxlZCBzdGFycywiIGJyb3duIGR3YXJmcyBhcmUgY29vbCBvYmplY3RzIHRoYXQgYXJlIHRvbyBzbWFsbCB0byBiZSBvcmRpbmFyeSBzdGFycyBiZWNhdXNlIHRoZXkgY2Fubm90IHN1c3RhaW4gbnVjbGVhciBmdXNpb24gaW4gdGhlaXIgY29yZXMgdGhlIHdheSBvdXIgU3VuIGRvZXMuIFRoZSBkYXJrIHJlZCBjb2x1bW4sIGJlbG93LCBsZWZ0LCBzaG93cyBhbiBpbGx1bWluYXRlZCBlZGdlIG9mIHRoZSBjYXZpdHkgd2FsbC4gVGhlIE9yaW9uIE5lYnVsYSBpcyAxLDUwMCBsaWdodC15ZWFycyBhd2F5LCB0aGUgbmVhcmVzdCBzdGFyLWZvcm1pbmcgcmVnaW9uIHRvIEVhcnRoLiBBc3Ryb25vbWVycyB1c2VkIDUyMCBIdWJibGUgaW1hZ2VzLCB0YWtlbiBpbiBmaXZlIGNvbG91cnMsIHRvIG1ha2UgdGhpcyBwaWN0dXJlLiBUaGV5IGFsc28gYWRkZWQgZ3JvdW5kLWJhc2VkIHBob3RvcyB0byBmaWxsIG91dCB0aGUgbmVidWxhLiBUaGUgQUNTIG1vc2FpYyBjb3ZlcnMgYXBwcm94aW1hdGVseSB0aGUgYXBwYXJlbnQgYW5ndWxhciBzaXplIG9mIHRoZSBmdWxsIG1vb24uIFRoZSBPcmlvbiBvYnNlcnZhdGlvbnMgd2VyZSB0YWtlbiBiZXR3ZWVuIDIwMDQgYW5kIDIwMDUu/9sAQwAEAwMDAwIEAwMDBAQEBQYKBgYFBQYMCAkHCg4MDw4ODA0N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&#x27;;
+  const S=420, SKY=0.005, NEB_CONT=0.002, FIELD=.5005;
+  const lines=[
+    {name:&#x27;Hβ&#x27;,wavelength:486.13,weight:.19},
+    {name:&#x27;[OIII]4959&#x27;,wavelength:495.89,weight:.20},
+    {name:&#x27;[OIII]5007&#x27;,wavelength:500.68,weight:.62},
+    {name:&#x27;[NII]6548&#x27;,wavelength:654.80,weight:.065},
+    {name:&#x27;Hα&#x27;,wavelength:656.28,weight:1},
+    {name:&#x27;[NII]6584&#x27;,wavelength:658.34,weight:.19}
+  ];
+  const reduced=window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;);
+  let texture=null,textureMean=0,current=null,animationId=0,pending=0,rayData=[],rayProgress=1;
+  let lastAfocal=false;
+  const savedF={direct:1.2,afocal:4},savedAngle={direct:0,afocal:0};
+  const contexts=[$(&#x27;normal&#x27;).getContext(&#x27;2d&#x27;),$(&#x27;optimized&#x27;).getContext(&#x27;2d&#x27;)];
+  const rayCanvas=$(&#x27;rays&#x27;), rayCtx=rayCanvas.getContext(&#x27;2d&#x27;);
+  const mobileCanvas=$(&#x27;mobile-scene&#x27;),mobileCtx=mobileCanvas.getContext(&#x27;2d&#x27;);
+  const narrow=window.matchMedia(&#x27;(max-width: 640px)&#x27;);
+  $(&#x27;settings&#x27;).open=!narrow.matches;
+  $(&#x27;optical-section&#x27;).open=!narrow.matches;
+  const f2=n=&gt;Number(n).toFixed(2).replace(/0$/,&#x27;&#x27;).replace(/\.0$/,&#x27;&#x27;);
+  function config(optimized){
+    return {position:$(&#x27;position&#x27;).value, fNumber:+$(&#x27;f&#x27;).value,telescopeF:+$(&#x27;f&#x27;).value,
+      eyepieceFocal:+$(&#x27;eyepiece&#x27;).value,nvFocal:26,nvF:1.2,
+      width:+$(&#x27;width&#x27;).value,filterKind:$(&#x27;band&#x27;).value,designF:+$(&#x27;design&#x27;).value,
+      nEff:2,optimized,lines,pupilSamples:384,angleDeg:0,
+      focalLength:+$(&#x27;focal-left&#x27;).value,targetAngle:$(&#x27;angle-wrap&#x27;).hidden?0:+$(&#x27;angle&#x27;).value};
+  }
+  function comparisonPositions(){
+    const position=$(&#x27;position&#x27;).value;
+    return position.startsWith(&#x27;afocal&#x27;)?[position===&#x27;afocalBefore&#x27;?&#x27;afocalBefore&#x27;:&#x27;afocalBetween&#x27;,&#x27;afocalAfter&#x27;]:[&#x27;front&#x27;,&#x27;rear&#x27;];
+  }
+  function positionComparison(){return $(&#x27;comparison-mode&#x27;).value.startsWith(&#x27;position&#x27;);}
+  function focalComparison(){return $(&#x27;comparison-mode&#x27;).value.startsWith(&#x27;focal&#x27;);}
+  function syncControls(switched){
+    const afocal=$(&#x27;position&#x27;).value.startsWith(&#x27;afocal&#x27;);
+    if(afocal&amp;&amp;focalComparison())$(&#x27;comparison-mode&#x27;).value=$(&#x27;comparison-mode&#x27;).value===&#x27;focalOptimized&#x27;?&#x27;positionOptimized&#x27;:&#x27;position&#x27;;
+    [...$(&#x27;comparison-mode&#x27;).options].forEach(option=&gt;{if(option.value.startsWith(&#x27;focal&#x27;))option.disabled=afocal;});
+    $(&#x27;focal-controls&#x27;).hidden=afocal;
+    $(&#x27;focal-right-wrap&#x27;).hidden=!focalComparison();
+    $(&#x27;focal-left-label&#x27;).textContent=focalComparison()?&#x27;左侧焦距&#x27;:&#x27;两图共同焦距&#x27;;
+    $(&#x27;focal-hint&#x27;).textContent=afocal?&#x27;无焦沿用600 mm望远镜与26 mm夜视物镜；不同焦距比较用于直焦。&#x27;:focalComparison()?&#x27;两边使用同一焦比、同一片滤镜与18 mm圆形阴极；只改变焦距。&#x27;:&#x27;同一焦距用于两幅图，18 mm圆形阴极决定能看到多大天区。&#x27;;
+    if(switched){
+      const oldKey=lastAfocal?&#x27;afocal&#x27;:&#x27;direct&#x27;,newKey=afocal?&#x27;afocal&#x27;:&#x27;direct&#x27;;
+      savedF[oldKey]=+$(&#x27;f&#x27;).value;savedAngle[oldKey]=+$(&#x27;angle&#x27;).value;
+      $(&#x27;f&#x27;).min=afocal?&#x27;2.8&#x27;:&#x27;.95&#x27;; $(&#x27;f&#x27;).max=afocal?&#x27;8&#x27;:&#x27;6&#x27;;
+      $(&#x27;f&#x27;).value=String(savedF[newKey]);$(&#x27;angle&#x27;).value=String(savedAngle[newKey]);
+      lastAfocal=afocal;
+    }
+    $(&#x27;eyepiece-wrap&#x27;).hidden=!afocal;
+    $(&#x27;f-label&#x27;).textContent=afocal?&#x27;望远镜焦比&#x27;:&#x27;成像焦比&#x27;;
+    $(&#x27;f&#x27;).setAttribute(&#x27;aria-label&#x27;,afocal?&#x27;望远镜焦比&#x27;:&#x27;成像焦比&#x27;);
+    $(&#x27;f-min&#x27;).textContent=afocal?&#x27;F2.8&#x27;:&#x27;F0.95&#x27;; $(&#x27;f-max&#x27;).textContent=afocal?&#x27;F8&#x27;:&#x27;F6&#x27;;
+    $(&#x27;f-output&#x27;).textContent=&#x27;F&#x27;+Number($(&#x27;f&#x27;).value).toFixed(2);
+    const previewPosition=positionComparison()?comparisonPositions()[0]:$(&#x27;position&#x27;).value;
+    const parallel=[&#x27;front&#x27;,&#x27;afocalBetween&#x27;].includes(previewPosition);
+    $(&#x27;angle-wrap&#x27;).hidden=!(parallel||focalComparison());
+    const angleConfig=config(false),leftLimit=F.geometry(angleConfig).halfControl;
+    const rightLimit=focalComparison()?F.geometry({...angleConfig,focalLength:+$(&#x27;focal-right&#x27;).value}).halfControl:leftLimit;
+    $(&#x27;angle&#x27;).max=String(Math.floor(Math.max(leftLimit,rightLimit)*10)/10);
+    if(+$(&#x27;angle&#x27;).value&gt;+$(&#x27;angle&#x27;).max)$(&#x27;angle&#x27;).value=$(&#x27;angle&#x27;).max;
+    $(&#x27;angle-label&#x27;).textContent=previewPosition===&#x27;afocalBetween&#x27;?&#x27;目标在夜视视场内的离轴角&#x27;:&#x27;目标中心离轴角（真实天区）&#x27;;
+    $(&#x27;angle-output&#x27;).textContent=Number($(&#x27;angle&#x27;).value).toFixed(1)+&#x27;°&#x27;;
+    const positionHints={rear:&#x27;光先经过镜头汇聚，再过滤镜；画面中心也有斜光。&#x27;,front:&#x27;光先过滤镜，再进镜头；正中心近乎直射，偏向边缘才逐渐倾斜。&#x27;,afocalBefore:&#x27;滤镜在目镜前，接到望远镜正在汇聚的光。&#x27;,afocalBetween:&#x27;滤镜在两镜之间；中心光近乎直射，边缘光的倾角被目镜放大。&#x27;,afocalAfter:&#x27;滤镜在夜视物镜后；光已再次汇聚，要看最终焦比。&#x27;};
+    $(&#x27;position-hint&#x27;).textContent=positionHints[$(&#x27;position&#x27;).value];
+    if(positionComparison())$(&#x27;position-hint&#x27;).textContent=afocal?(previewPosition===&#x27;afocalBefore&#x27;?&#x27;两图比较目镜入光端与夜视物镜后；都在汇聚光束中，但光锥宽度不同。&#x27;:&#x27;两图比较夜视物镜前与后；选“目镜入光端”，可改看更前一段。&#x27;):&#x27;两图同时比较直焦镜头前与后；选下面的无焦位置，可切换整套光路。&#x27;;
+    $(&#x27;f-hint&#x27;).textContent=afocal?&#x27;这里调望远镜的 F 值；目镜与夜视物镜还会改变最终成像焦比。&#x27;:$(&#x27;position&#x27;).value===&#x27;front&#x27;?&#x27;前置时，中心天体的入射角不随 F 值改变；偏移主要看它离中心多远。&#x27;:&#x27;F 后的数字越小，光锥越宽，后置滤镜遇到的斜光越多。&#x27;;
+    if(positionComparison()&amp;&amp;!afocal)$(&#x27;f-hint&#x27;).textContent=&#x27;同一焦比用于两幅图；F 越小，后置光锥越宽，前置中心光仍近乎正入射。&#x27;;
+    $(&#x27;band-hint&#x27;).textContent={ha:&#x27;留下氢的 656.3 nm 红光。&#x27;,oiii:&#x27;主要留下氧的 500.7 nm 蓝绿光。&#x27;,dual:&#x27;同时留下 Hα 与 OIII；两扇通带各用所选带宽。&#x27;}[$(&#x27;band&#x27;).value];
+    $(&#x27;width-hint&#x27;).textContent={&#x27;3&#x27;:&#x27;门很窄：少进背景，也更容易挡掉偏移后的主线。&#x27;,&#x27;5&#x27;:&#x27;比 3 nm 多留一点余地，也多进一些背景。&#x27;,&#x27;7&#x27;:&#x27;较宽的通带，对小幅偏移更宽容。&#x27;,&#x27;10&#x27;:&#x27;比 7 nm 更宽，给偏移留出更多余地，也多进一些背景。&#x27;,&#x27;12&#x27;:&#x27;比 10 nm 再宽一点；是否更好，要同时看星云和背景。&#x27;,&#x27;15&#x27;:&#x27;更宽的门：主线较不容易被偏移挡住，背景也更亮。&#x27;,&#x27;20&#x27;:&#x27;进一步容纳偏移；可能同时放进更多邻近谱线和背景。&#x27;,&#x27;25&#x27;:&#x27;通带已很宽，通常更耐偏移，但星云未必更突出。&#x27;,&#x27;30&#x27;:&#x27;这里最宽：给偏移最多余地，也放进最多连续背景；不等于对比最好。&#x27;}[$(&#x27;width&#x27;).value];
+    $(&#x27;design-hint&#x27;).textContent=&#x27;优化版固定针对 F&#x27;+f2($(&#x27;design&#x27;).value)+&#x27; 光锥预补偿；不会自动跟随实际焦比。&#x27;;
+    $(&#x27;design&#x27;).disabled=[&#x27;position&#x27;,&#x27;focal&#x27;].includes($(&#x27;comparison-mode&#x27;).value);
+    if($(&#x27;design&#x27;).disabled)$(&#x27;design-hint&#x27;).textContent=&#x27;当前两边都用普通滤镜；切换到优化对比时，这个选项才生效。&#x27;;
+    else if(positionComparison()||focalComparison())$(&#x27;design-hint&#x27;).textContent=&#x27;两边使用同一片按 F&#x27;+f2($(&#x27;design&#x27;).value)+&#x27; 优化的滤镜，只改变&#x27;+(focalComparison()?&#x27;镜头焦距。&#x27;:&#x27;放置位置。&#x27;);
+    $(&#x27;display-hint&#x27;).textContent=$(&#x27;display&#x27;).value===&#x27;fixed&#x27;?&#x27;相同收光时间、相同亮度规则，同时看光量与对比变化。&#x27;:&#x27;把两边天空调得一样亮，专看星云有多突出；不恢复丢失的光。&#x27;;
+    $(&#x27;settings-summary&#x27;).textContent=($(&#x27;design&#x27;).disabled?&#x27;普通滤镜&#x27;:&#x27;按 F&#x27;+f2($(&#x27;design&#x27;).value)+&#x27; 优化&#x27;)+&#x27; · &#x27;+($(&#x27;display&#x27;).value===&#x27;fixed&#x27;?&#x27;固定曝光&#x27;:&#x27;统一天空&#x27;);
+    $(&#x27;eyepiece-hint&#x27;).textContent=$(&#x27;eyepiece&#x27;).value===&#x27;67&#x27;?&#x27;67 mm：倍率较低，最终焦比通常更快；入口太小时会截去多余光。&#x27;:&#x27;55 mm：倍率略高，最终焦比通常比 67 mm 时慢。&#x27;;
+    $(&#x27;angle-hint&#x27;).textContent=previewPosition===&#x27;afocalBetween&#x27;?&#x27;0° 是中心；这里调的是目镜放大后的角度，不是真实天区角度。&#x27;:&#x27;0° 是镜头正前方；往右调，把这块星云移向视场边缘。&#x27;;
+    if(positionComparison()&amp;&amp;parallel)$(&#x27;angle-hint&#x27;).textContent+=&#x27; 两图观察同一天区；后置按理想远心模型保持相同光锥。&#x27;;
+    if(focalComparison())$(&#x27;angle-hint&#x27;).textContent=&#x27;两图观察同一真实天区方向。超过某支镜头的视场时，会标明看不到；后置透过率仍按理想远心光锥计算。&#x27;;
+  }
+  function renderImage(index,cfg,result,geo,reference){
+    const parallel=geo.mode===&#x27;parallel&#x27;;
+    const angle=parallel?cfg.angleDeg:0;
+    const mag=cfg.position===&#x27;afocalBetween&#x27;?600/cfg.eyepieceFocal:1;
+    const localField=FIELD*mag;
+    const maxAngle=Math.max(.01,angle+localField);
+    const lut=parallel?O.radialProfile(cfg,{bins:384,maxAngleDeg:maxAngle}):null;
+    const project=F.projection(cfg),targetVisible=F.target(cfg).center.inside;
+    const data=contexts[index].createImageData(S,S);
+    const exposure=7.84/(geo.finalF*geo.finalF);
+    let sumSignal=0,sumBackground=0,sumTexture=0,visible=0;
+    for(let y=0;y&lt;S;y++)for(let x=0;x&lt;S;x++){
+      const i=y*S+x;
+      const point=project(((x+.5)/S-.5)*FIELD,((y+.5)/S-.5)*FIELD);
+      if(!point.inside)continue;
+      let line=result.lineSignal,ew=result.equivalentWidth;
+      if(parallel){
+        line=O.lookup(lut,&#x27;lineSignal&#x27;,point.angle); ew=O.lookup(lut,&#x27;equivalentWidth&#x27;,point.angle);
+      }
+      const t=texture[i],background=SKY*ew,signal=t*(line+NEB_CONT*ew);
+      const flux=background+signal;
+      let z=$(&#x27;display&#x27;).value===&#x27;sky&#x27;?flux/background*.04:flux*exposure;
+      // One fixed, shared display transfer; never normalize each image to itself.
+      const display=Math.max(0,Math.min(1,Math.asinh(4*z)/Math.asinh(10)));
+      const v=Math.round(display*255);
+      data.data[i*4]=v;data.data[i*4+1]=v;data.data[i*4+2]=v;data.data[i*4+3]=255;
+      sumSignal+=signal;sumBackground+=background;sumTexture+=t;visible++;
+    }
+    contexts[index].putImageData(data,0,0);
+    const ratio=visible&amp;&amp;sumTexture&gt;0?(sumSignal/sumBackground)/((sumTexture/visible)*(reference.lineSignal+NEB_CONT*reference.equivalentWidth)/(SKY*reference.equivalentWidth)):null;
+    const prefix=index?&#x27;optimized&#x27;:&#x27;normal&#x27;;
+    $(prefix+&#x27;-contrast&#x27;).textContent=ratio===null?&#x27;—&#x27;:(ratio*100).toFixed(0)+&#x27;%&#x27;;
+    $(prefix+&#x27;-target&#x27;).textContent=targetVisible?(result.targetLineFraction*100).toFixed(0)+&#x27;%&#x27;:&#x27;—&#x27;;
+    if(!visible)drawOutside(index);
+    return {ratio,meanSignal:visible?sumSignal/visible:null,meanBackground:visible?sumBackground/visible:null,visibleFraction:visible/(S*S),targetVisible};
+  }
+  function update(){
+    if(!texture)return;
+    syncControls(false);
+    const cfg=config(false), opt=config(true), geo=O.geometry(cfg);
+    const angle=geo.mode===&#x27;parallel&#x27;?+$(&#x27;angle&#x27;).value:0;
+    cfg.angleDeg=angle;opt.angleDeg=angle;
+    const a=O.evaluate(cfg),b=O.evaluate(opt);
+    const ref=O.evaluate({...cfg,position:&#x27;ideal&#x27;,mode:&#x27;ideal&#x27;,optimized:false,angleDeg:0});
+    const mode=$(&#x27;comparison-mode&#x27;).value,paired=positionComparison(),focal=focalComparison();
+    const configs=focal?[+$(&#x27;focal-left&#x27;).value,+$(&#x27;focal-right&#x27;).value].map(focalLength=&gt;({...cfg,focalLength,optimized:mode===&#x27;focalOptimized&#x27;})):paired?comparisonPositions().map(position=&gt;{
+      const c={...cfg,position,optimized:mode===&#x27;positionOptimized&#x27;};
+      c.angleDeg=O.geometry(c).mode===&#x27;parallel&#x27;?+$(&#x27;angle&#x27;).value:0;
+      return c;
+    }):[cfg,opt];
+    const geometries=configs.map(c=&gt;O.geometry(c));
+    const results=paired||focal?configs.map(c=&gt;O.evaluate(c)):[a,b];
+    const metrics=configs.map((c,i)=&gt;renderImage(i,c,results[i],geometries[i],ref));
+    const names={front:&#x27;前置滤镜&#x27;,rear:&#x27;后置滤镜&#x27;,afocalBefore:&#x27;目镜入光端&#x27;,afocalBetween:&#x27;夜视物镜前&#x27;,afocalAfter:&#x27;夜视物镜后&#x27;};
+    const labels=focal?configs.map(c=&gt;c.focalLength+&#x27; mm&#x27;):paired?configs.map(c=&gt;names[c.position]):[&#x27;普通滤镜&#x27;,&#x27;快镜优化&#x27;];
+    const beamText=(g,c)=&gt;g.mode===&#x27;parallel&#x27;?&#x27;平行束 · 入射 &#x27;+c.angleDeg.toFixed(1)+&#x27;°&#x27;:&#x27;汇聚光锥 F&#x27;+f2(g.beamF);
+    const subtitles=focal?configs.map(c=&gt;names[c.position]+&#x27; · F&#x27;+f2(c.fNumber)):paired?configs.map((c,i)=&gt;beamText(geometries[i],c)):[&#x27;正面入射时对准目标光&#x27;,&#x27;固定按 F&#x27;+f2(cfg.designF)+&#x27; 预补偿&#x27;];
+    $(&#x27;comparison-hint&#x27;).textContent=focal?
+      &#x27;固定&#x27;+names[cfg.position]+&#x27;、F&#x27;+f2(cfg.fNumber)+&#x27;与&#x27;+(mode===&#x27;focalOptimized&#x27;?&#x27;优化滤镜&#x27;:&#x27;普通滤镜&#x27;)+&#x27;；同时比较&#x27;+labels.join(&#x27; / &#x27;)+&#x27;的实际视场。&#x27;:paired?
+      (mode===&#x27;positionOptimized&#x27;?&#x27;同一片按 F&#x27;+f2(cfg.designF)+&#x27; 优化的滤镜&#x27;:&#x27;同一片普通滤镜&#x27;)+&#x27;：左边&#x27;+labels[0]+&#x27;，右边&#x27;+labels[1]+&#x27;；两边最终焦比、曝光与显示规则相同。&#x27;:
+      &#x27;固定在&#x27;+names[cfg.position]+&#x27;：左边普通，右边快镜优化；其余条件相同。&#x27;;
+    [&#x27;left&#x27;,&#x27;right&#x27;].forEach((side,i)=&gt;{
+      $(side+&#x27;-title&#x27;).textContent=labels[i];$(side+&#x27;-metric-title&#x27;).textContent=labels[i];
+      $(&#x27;mobile-&#x27;+side).textContent=i?labels[i]+&#x27; →&#x27;:&#x27;← &#x27;+labels[i];
+      $(i?&#x27;optimized&#x27;:&#x27;normal&#x27;).setAttribute(&#x27;aria-label&#x27;,labels[i]+&#x27;下的M42灰度形态模拟，&#x27;+subtitles[i]);
+    });
+    $(&#x27;left-subtitle&#x27;).textContent=subtitles[0];$(&#x27;opt-label&#x27;).textContent=subtitles[1];
+    $(&#x27;mobile-scene&#x27;).setAttribute(&#x27;aria-label&#x27;,&#x27;左右拖动分界线：左侧&#x27;+labels[0]+&#x27;，右侧&#x27;+labels[1]+&#x27;；也可使用下方滑块&#x27;);
+    $(&#x27;wipe&#x27;).setAttribute(&#x27;aria-label&#x27;,labels[0]+&#x27;图像占据的比例&#x27;);
+    const field=configs[0].position===&#x27;afocalBetween&#x27;?FIELD*600/cfg.eyepieceFocal:FIELD;
+    const local=paired?&#x27;左：&#x27;+beamText(geometries[0],configs[0])+&#x27;；右：&#x27;+beamText(geometries[1],configs[1]):beamText(geo,cfg);
+    $(&#x27;state-detail&#x27;).textContent=local+&#x27; · 最终 F&#x27;+f2(geo.finalF)+(cfg.position.startsWith(&#x27;afocal&#x27;)?&#x27; · 目镜 &#x27;+cfg.eyepieceFocal+&#x27; mm&#x27;:&#x27;&#x27;)+(geometries[0].mode===&#x27;parallel&#x27;?&#x27; · 特写张角 &#x27;+field.toFixed(2)+&#x27;°&#x27;:&#x27;&#x27;);
+    const comparison={mode,configs,geometries,results,metrics,labels,reference:ref};
+    current={cfg,opt,geo,a,b,ma:metrics[0],mb:metrics[1],angle,comparison};
+    drawComparison();drawFields();prepareRays();stopAnimation();drawRays(1);
+    const cropNotes=metrics.map((m,i)=&gt;labels[i]+&#x27;：&#x27;+(!m.visibleFraction?&#x27;此天区在视场外&#x27;:m.visibleFraction&lt;1?&#x27;特写只有一部分落在阴极内&#x27;:&#x27;特写完整落在视场内&#x27;));
+    $(&#x27;crop-note&#x27;).textContent=cropNotes.join(&#x27;；&#x27;)+&#x27;。特写统一放大；实际大小看圆图小框，空白部分表示视场外。&#x27;;
+    $(&#x27;status&#x27;).textContent=&#x27;已更新，&#x27;+metrics.map((m,i)=&gt;labels[i]+(m.ratio===null?&#x27;天区在视场外&#x27;:&#x27;对比保留&#x27;+(m.ratio*100).toFixed(0)+&#x27;%&#x27;)).join(&#x27;，&#x27;)+&#x27;。&#x27;;
+    root.dataset.ready=&#x27;true&#x27;;
+    // Numerical state is exposed only for reproducibility and verification.
+    root.m42State={...current,reference:ref};
+  }
+  function schedule(){if(pending)cancelAnimationFrame(pending);pending=requestAnimationFrame(()=&gt;{pending=0;update();});}
+  function stopAnimation(){if(animationId)cancelAnimationFrame(animationId);animationId=0;rayProgress=1;$(&#x27;play&#x27;).textContent=reduced.matches?&#x27;显示通过结果&#x27;:&#x27;播放一束光&#x27;;}
+  function drawOutside(index){
+    const ctx=contexts[index],p=palette();ctx.clearRect(0,0,S,S);ctx.fillStyle=p.fg;ctx.textAlign=&#x27;center&#x27;;ctx.font=&#x27;400 22px &#x27;+getComputedStyle(root).fontFamily;ctx.fillText(&#x27;此天区超出视场&#x27;,S/2,S/2);
+  }
+  function drawFields(){
+    if(!current)return;
+    const paletteColors=palette(),N=280,C=N/2,R=132,scene=$(&#x27;field-view&#x27;).value===&#x27;scene&#x27;;
+    $(&#x27;field-view-hint&#x27;).textContent=scene?&#x27;按真实大小放置约半度的M42特写；框外用均匀天空示意，不是完整星图。两图使用相同曝光与显示规则。&#x27;:&#x27;主线透过图：黑色0%，白色100%；两图同一刻度。小框为M42特写的实际范围。&#x27;;
+    const fields=current.comparison.configs.map((cfg,index)=&gt;{
+      const side=index?&#x27;right&#x27;:&#x27;left&#x27;,canvas=$(&#x27;field-&#x27;+side),ctx=canvas.getContext(&#x27;2d&#x27;);
+      const g=F.geometry(cfg),optical=O.geometry(cfg),parallel=optical.mode===&#x27;parallel&#x27;;
+      const base={...cfg,angleDeg:0};
+      const centerResult=O.evaluate(base),center=centerResult.targetLineFraction;
+      const edge=O.evaluate({...base,angleDeg:parallel?g.halfControl:0}).targetLineFraction;
+      const profile=parallel?O.radialProfile(base,{bins:512,maxAngleDeg:g.halfControl}):null;
+      const inverse=F.unprojection(cfg),exposure=7.84/(optical.finalF*optical.finalF);
+      const pixels=ctx.createImageData(N,N);
+      for(let y=0;y&lt;N;y++)for(let x=0;x&lt;N;x++){
+        const rho=Math.hypot((x+.5-C)/R,(y+.5-C)/R);if(rho&gt;1)continue;
+        const theta=Math.atan(rho*9/g.angleFocal)*180/Math.PI;
+        const t=parallel?O.lookup(profile,&#x27;targetLineFraction&#x27;,theta):center;
+        let intensity=t;
+        if(scene){
+          const sky=inverse((x+.5-C)/R*9,(y+.5-C)/R*9);
+          const sx=Math.floor((sky.dx/FIELD+.5)*S),sy=Math.floor((sky.dy/FIELD+.5)*S);
+          const nebula=sx&gt;=0&amp;&amp;sx&lt;S&amp;&amp;sy&gt;=0&amp;&amp;sy&lt;S?texture[sy*S+sx]:0;
+          const lineSignal=parallel?O.lookup(profile,&#x27;lineSignal&#x27;,theta):centerResult.lineSignal;
+          const ew=parallel?O.lookup(profile,&#x27;equivalentWidth&#x27;,theta):centerResult.equivalentWidth;
+          const background=SKY*ew,flux=background+nebula*(lineSignal+NEB_CONT*ew);
+          const z=$(&#x27;display&#x27;).value===&#x27;sky&#x27;?flux/background*.04:flux*exposure;
+          intensity=Math.asinh(4*z)/Math.asinh(10);
+        }
+        const v=Math.round(255*Math.max(0,Math.min(1,intensity))),offset=(y*N+x)*4;
+        pixels.data[offset]=v;pixels.data[offset+1]=v;pixels.data[offset+2]=v;pixels.data[offset+3]=255;
+      }
+      ctx.putImageData(pixels,0,0);
+      ctx.save();ctx.strokeStyle=paletteColors.muted;ctx.lineWidth=1;ctx.beginPath();ctx.arc(C,C,R,0,Math.PI*2);ctx.globalAlpha=.6;ctx.stroke();ctx.globalAlpha=1;ctx.clip();
+      const target=F.target(cfg),outline=target.corners.map(point=&gt;[C+point.x/9*R,C+point.y/9*R]);outline.push(outline[0]);
+      line(ctx,outline,paletteColors.bg,1,3);line(ctx,outline,paletteColors.fg,1,1);ctx.restore();
+      const label=current.comparison.labels[index];
+      $(&#x27;field-&#x27;+side+&#x27;-title&#x27;).textContent=label+(focalComparison()?&#x27; · F&#x27;+f2(cfg.fNumber):g.afocal?&#x27;&#x27;:&#x27; · &#x27;+cfg.focalLength+&#x27; mm&#x27;);
+      $(&#x27;field-&#x27;+side+&#x27;-fov&#x27;).textContent=&#x27;全视场 &#x27;+(g.halfSky*2).toFixed(1)+&#x27;°&#x27;;
+      $(&#x27;field-&#x27;+side+&#x27;-transmission&#x27;).textContent=&#x27;中心 &#x27;+(center*100).toFixed(1)+&#x27;% · 边缘 &#x27;+(edge*100).toFixed(1)+&#x27;%&#x27;;
+      const metric=current.comparison.metrics[index];
+      $(&#x27;field-&#x27;+side+&#x27;-target&#x27;).textContent=!metric.visibleFraction?&#x27;M42特写在视场外&#x27;:metric.visibleFraction&lt;1?&#x27;M42特写部分超出视场&#x27;:&#x27;M42特写在视场内&#x27;;
+      canvas.setAttribute(&#x27;aria-label&#x27;,(scene?&#x27;M42真实角尺度取景示意，&#x27;:&#x27;主线透过分布，&#x27;)+label+&#x27;，全视场&#x27;+(g.halfSky*2).toFixed(1)+&#x27;度，主线中心透过&#x27;+(center*100).toFixed(1)+&#x27;%，边缘透过&#x27;+(edge*100).toFixed(1)+&#x27;%。小框代表M42特写的实际范围。&#x27;);
+      return {...g,centerTransmission:center,edgeTransmission:edge,target};
+    });
+    current.comparison.fields=fields;
+  }
+  function palette(){
+    const probe=document.createElement(&#x27;span&#x27;);probe.hidden=true;root.append(probe);
+    const get=key=&gt;{probe.style.color=&#x27;var(&#x27;+key+&#x27;)&#x27;;return getComputedStyle(probe).color;};
+    const p={fg:get(&#x27;--foreground&#x27;),bg:get(&#x27;--background&#x27;),muted:get(&#x27;--muted-foreground&#x27;),border:get(&#x27;--border&#x27;),a:get(&#x27;--viz-series-1&#x27;),b:get(&#x27;--viz-series-2&#x27;)};
+    probe.remove();return p;
+  }
+  function line(ctx,points,color,alpha,width){
+    ctx.save();ctx.strokeStyle=color;ctx.globalAlpha=alpha;ctx.lineWidth=width;
+    ctx.beginPath();points.forEach((p,i)=&gt;i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.restore();
+  }
+  function splitAtX(points,x){
+    for(let i=1;i&lt;points.length;i++)if(points[i-1][0]&lt;=x&amp;&amp;points[i][0]&gt;=x){
+      const f=(x-points[i-1][0])/(points[i][0]-points[i-1][0]);
+      const p=[x,points[i-1][1]+f*(points[i][1]-points[i-1][1])];
+      return [points.slice(0,i).concat([p]),[p].concat(points.slice(i))];
+    }
+    return [points,[]];
+  }
+  function rayTransmission(cfg,rho){
+    const g=O.geometry(cfg), theta=g.mode===&#x27;parallel&#x27;?cfg.angleDeg:Math.asin(Math.abs(rho)/(2*g.beamF))*180/Math.PI;
+    const selected=cfg.filterKind===&#x27;oiii&#x27;?500.7:656.28;
+    return O.transmission(selected,{...cfg,position:&#x27;front&#x27;,mode:&#x27;parallel&#x27;,beamF:Infinity,angleDeg:theta});
+  }
+  function makeGeometry(w,cy,cfg){
+    const afocal=cfg.position.startsWith(&#x27;afocal&#x27;);
+    const compact=w&lt;500;
+    const left=compact?15:22,right=w-14;
+    const span=right-left;
+    let filterX,components=[],make;
+    const maxR=cfg.position.startsWith(&#x27;afocal&#x27;)?36:45;
+    const g=O.geometry(cfg);
+    if(!afocal){
+      const lx=left+span*.40,sx=left+span*.93;
+      const radius=maxR*.95/cfg.fNumber;
+      const h=g.mode===&#x27;parallel&#x27;?14*cfg.angleDeg/18:0;
+      const incomingSlope=h/(sx-lx);
+      filterX=cfg.position===&#x27;front&#x27;?left+span*.23:left+span*.70;
+      components=[{x:lx,label:&#x27;物镜&#x27;,type:&#x27;lens&#x27;,r:maxR},{x:sx,label:&#x27;像面&#x27;,type:&#x27;sensor&#x27;,r:maxR}];
+      make=rho=&gt;[[left,cy+rho*radius-incomingSlope*(lx-left)],[lx,cy+rho*radius],[sx,cy+h]];
+    }else{
+      const tx=left+span*.17,fx=left+span*.43,ex=left+span*.57,nx=left+span*.77,sx=left+span*.95;
+      const ft=fx-tx,fe=ex-fx,fn=sx-nx;
+      const effectiveT=Math.max(cfg.telescopeF,cfg.eyepieceFocal/(cfg.nvFocal/cfg.nvF));
+      const radius=maxR*2.8/effectiveT;
+      const beta=cfg.position===&#x27;afocalBetween&#x27;?-(cfg.angleDeg/18)*.07:0;
+      const h=-fe*beta,skySlope=h/ft;
+      filterX=cfg.position===&#x27;afocalBefore&#x27;?left+span*.32:cfg.position===&#x27;afocalBetween&#x27;?left+span*.66:left+span*.87;
+      components=[{x:tx,label:&#x27;望远镜&#x27;,type:&#x27;lens&#x27;,r:maxR},{x:ex,label:&#x27;目镜&#x27;,type:&#x27;lens&#x27;,r:23},{x:nx,label:compact?&#x27;NV&#x27;:&#x27;夜视物镜&#x27;,type:&#x27;lens&#x27;,r:23},{x:sx,label:&#x27;阴极&#x27;,type:&#x27;sensor&#x27;,r:23}];
+      make=rho=&gt;{const u=rho*radius,yE=h*(1+fe/ft)-u*fe/ft,yN=yE+beta*(nx-ex);return [[left,cy+u-skySlope*(tx-left)],[tx,cy+u],[fx,cy+h],[ex,cy+yE],[nx,cy+yN],[sx,cy+beta*fn]];};
+    }
+    return {filterX,components,make,left,right};
+  }
+  function prepareRays(){
+    if(!current)return;
+    const frontback=$(&#x27;ray-mode&#x27;).value===&#x27;frontback&#x27;;
+    const selected=current.cfg.filterKind===&#x27;oiii&#x27;?500.7:656.28;
+    const name=current.cfg.filterKind===&#x27;oiii&#x27;?&#x27;OIII&#x27;:&#x27;Hα&#x27;;
+    const focal=focalComparison(),synced=frontback&amp;&amp;current.comparison.mode!==&#x27;design&#x27;;
+    $(&#x27;ray-mode&#x27;).options[0].textContent=focal?&#x27;不同焦距 · 跟随两图&#x27;:&#x27;前置 vs 后置 · 同时对照&#x27;;
+    const configs=frontback?(synced?current.comparison.configs:[&#x27;front&#x27;,&#x27;rear&#x27;].map(position=&gt;({...current.cfg,position,fNumber:current.geo.finalF,angleDeg:0,optimized:false}))):[current.cfg,current.opt];
+    const rhos=[-.96,-.78,-.57,-.32,0,.32,.57,.78,.96];
+    rayData=configs.map((cfg,index)=&gt;{
+      const g=O.geometry(cfg),half=g.mode===&#x27;parallel&#x27;?cfg.angleDeg:Math.asin(1/(2*g.beamF))*180/Math.PI;
+      const label=frontback?(focal?current.comparison.labels[index]+&#x27; · &#x27;+(cfg.position===&#x27;front&#x27;?&#x27;前置&#x27;:&#x27;后置&#x27;):cfg.position.startsWith(&#x27;afocal&#x27;)?current.comparison.labels[index]:(index?&#x27;后置：先汇聚，再过滤&#x27;:&#x27;前置：先过滤，再汇聚&#x27;)):(index?&#x27;快镜优化滤镜&#x27;:&#x27;普通滤镜&#x27;);
+      return {cfg,geo:g,label,
+        angle:g.mode===&#x27;parallel&#x27;?half.toFixed(1)+&#x27;°&#x27;:&#x27;0°～&#x27;+half.toFixed(1)+&#x27;°&#x27;,
+        transmission:O.transmission(selected,cfg),
+        rays:rhos.map(rho=&gt;({rho,t:rayTransmission(cfg,rho)}))};
+    });
+    $(&#x27;ray-description&#x27;).textContent=synced?&#x27;与图像同步：上方对应左图，下方对应右图；&#x27;+(configs[0].optimized?&#x27;两边均按 F&#x27;+f2(configs[0].designF)+&#x27; 优化。&#x27;:&#x27;两边均为普通滤镜。&#x27;)+(focal?&#x27;线段不按焦距比例绘制；视场大小见上方圆图。&#x27;:&#x27;&#x27;):frontback?&#x27;中心天体 · 普通滤镜 · 同一只 F&#x27;+f2(current.geo.finalF)+&#x27; 物镜。两边只改变滤镜前后位置。&#x27;:&#x27;跟随所选位置：上方普通滤镜，下方按 F&#x27;+f2(current.cfg.designF)+&#x27; 优化。&#x27;;
+    $(&#x27;passband-detail&#x27;).replaceChildren();
+    const labels=[&#x27;非等比例示意&#x27;,&#x27;光点：&#x27;+name+&#x27; &#x27;+selected.toFixed(1)+&#x27; nm&#x27;,&#x27;光点越暗＝透过越少&#x27;,&#x27;虚线：滤镜垂直方向&#x27;];
+    if(!frontback||configs[0].optimized)labels.push(...current.b.bands.map(band=&gt;(band.line&gt;600?&#x27;Hα&#x27;:&#x27;OIII&#x27;)+&#x27; 预偏置 +&#x27;+band.offset.toFixed(2)+&#x27; nm&#x27;));
+    labels.forEach(text=&gt;{const span=document.createElement(&#x27;span&#x27;);span.textContent=text;$(&#x27;passband-detail&#x27;).append(span);});
+    root.m42RayState={mode:frontback?(focal?&#x27;focal&#x27;:&#x27;frontback&#x27;):&#x27;current&#x27;,synced,selected,rows:rayData.map(row=&gt;({label:row.label,position:row.cfg.position,optimized:row.cfg.optimized,fNumber:row.geo.finalF,beamF:row.geo.beamF,angle:row.angle,transmission:row.transmission}))};
+    rayCanvas.setAttribute(&#x27;aria-label&#x27;,rayData.map(row=&gt;row.label+&#x27;，入射角&#x27;+row.angle+&#x27;，&#x27;+name+&#x27;透过&#x27;+(row.transmission*100).toFixed(0)+&#x27;%&#x27;).join(&#x27;；&#x27;));
+  }
+  function setPhase(progress){
+    const frontback=$(&#x27;ray-mode&#x27;).value===&#x27;frontback&#x27;,direct=frontback&amp;&amp;rayData[0].cfg.position===&#x27;front&#x27;;
+    let text;
+    if(frontback&amp;&amp;focalComparison()){
+      text=progress&gt;=1?&#x27;同一天区方向的前置入射角相同；相同 F 值的后置光锥也相同。焦距差异体现在实际视场，见圆图。&#x27;:&#x27;光点演示同一天区方向；不同焦距不会改变这束光在镜头前的入射角。&#x27;;
+      if(current.comparison.metrics.some(m=&gt;!m.targetVisible))text=&#x27;有一侧目标中心超出阴极范围；该行仅示意滤镜角度响应，不代表能被阴极接收。&#x27;;
+      if($(&#x27;ray-phase&#x27;).textContent!==text)$(&#x27;ray-phase&#x27;).textContent=text;
+      return;
+    }
+    if(progress&gt;=1)text=direct?&#x27;前置：整束光以 &#x27;+rayData[0].angle+&#x27; 入射。后置：中心也有斜光，光锥越宽，偏移通常越大。&#x27;:frontback?(rayData[0].geo.mode===&#x27;parallel&#x27;?&#x27;夜视物镜前是近似平行束，物镜后再次汇聚成光锥。&#x27;:&#x27;目镜前与夜视物镜后的光锥宽度不同；两边使用同一片滤镜。&#x27;):&#x27;通过后的明暗由入射角和滤镜通带共同决定；优化不能让所有角度都完全透过。&#x27;;
+    else if(progress&lt;.23)text=&#x27;① 同一颗天体的光，从左侧近乎平行地进入。&#x27;;
+    else if(progress&lt;.42)text=direct?&#x27;② 前置滤镜接到平行光，整束光的入射角为 &#x27;+rayData[0].angle+&#x27;。&#x27;:&#x27;② 光点正在沿当前光路前进，留意滤镜前的光束形状。&#x27;;
+    else if(progress&lt;.72)text=direct?&#x27;③ 物镜让光汇聚：光束里开始出现不同角度的斜光。&#x27;:&#x27;③ 经过物镜或目镜后，光束形状会改变。&#x27;;
+    else text=direct?&#x27;④ 后置滤镜接到斜光：被挡住的主线光在这里变淡。&#x27;:&#x27;④ 穿过滤镜后的光点，按这个方向的透过率变亮或变暗。&#x27;;
+    if($(&#x27;ray-phase&#x27;).textContent!==text)$(&#x27;ray-phase&#x27;).textContent=text;
+  }
+  function drawRays(progress){
+    if(!current||!rayData.length)return;
+    rayProgress=progress;
+    const width=Math.max(260,rayCanvas.getBoundingClientRect().width),rowHeight=212,height=rowHeight*2;
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    if(rayCanvas.width!==Math.round(width*dpr)||rayCanvas.height!==Math.round(height*dpr)){
+      rayCanvas.width=Math.round(width*dpr);rayCanvas.height=Math.round(height*dpr);rayCanvas.style.height=height+&#x27;px&#x27;;
+    }
+    rayCtx.setTransform(dpr,0,0,dpr,0,0);rayCtx.clearRect(0,0,width,height);
+    const p=palette(),base=parseFloat(getComputedStyle(root).fontSize)||14;
+    rayCtx.font=&#x27;400 &#x27;+Math.max(11,base*.86)+&#x27;px &#x27;+getComputedStyle(root).fontFamily;
+    const name=current.cfg.filterKind===&#x27;oiii&#x27;?&#x27;OIII&#x27;:&#x27;Hα&#x27;;
+    rayData.forEach((row,index)=&gt;{
+      const cfg=row.cfg,rowTop=index*rowHeight,cy=rowTop+120,color=index?p.b:p.a;
+      const geo=makeGeometry(width,cy,cfg);
+      rayCtx.fillStyle=p.fg;rayCtx.textAlign=&#x27;left&#x27;;rayCtx.fillText(row.label,10,rowTop+17);
+      rayCtx.fillText(&#x27;入射 &#x27;+row.angle+&#x27; · &#x27;+name+&#x27; 透过 &#x27;+(row.transmission*100).toFixed(0)+&#x27;%&#x27;,10,rowTop+38);
+      for(const c of geo.components){
+        line(rayCtx,[[c.x,cy-c.r],[c.x,cy+c.r]],p.border,1,c.type===&#x27;sensor&#x27;?2:1.5);
+        if(c.type===&#x27;lens&#x27;){
+          line(rayCtx,[[c.x-3,cy-c.r+6],[c.x,cy-c.r],[c.x+3,cy-c.r+6]],p.border,1,1);
+          line(rayCtx,[[c.x-3,cy+c.r-6],[c.x,cy+c.r],[c.x+3,cy+c.r-6]],p.border,1,1);
+        }
+        rayCtx.fillStyle=p.muted;rayCtx.textAlign=&#x27;center&#x27;;rayCtx.fillText(c.label,c.x,rowTop+189);
+      }
+      line(rayCtx,[[geo.left,cy],[geo.right,cy]],p.border,.45,1);
+      line(rayCtx,[[geo.filterX,cy-52],[geo.filterX,cy+52]],color,.85,3);
+      rayCtx.fillStyle=p.fg;rayCtx.textAlign=&#x27;center&#x27;;rayCtx.fillText(&#x27;滤镜&#x27;,geo.filterX,rowTop+61);
+      const anglePath=geo.make(-.96),angleParts=splitAtX(anglePath,geo.filterX),hit=angleParts[1][0];
+      const normalLength=Math.min(31,width*.08);
+      rayCtx.save();rayCtx.setLineDash([4,3]);line(rayCtx,[[hit[0]-normalLength,hit[1]],[hit[0]+normalLength,hit[1]]],p.fg,.55,1);rayCtx.restore();
+      if(row.geo.mode===&#x27;cone&#x27;){
+        const previous=angleParts[0][angleParts[0].length-2];
+        const a=Math.atan2(hit[1]-previous[1],hit[0]-previous[0]);
+        rayCtx.save();rayCtx.strokeStyle=p.fg;rayCtx.globalAlpha=.65;rayCtx.lineWidth=1;rayCtx.beginPath();rayCtx.arc(hit[0],hit[1],normalLength*.65,0,a,a&lt;0);rayCtx.stroke();rayCtx.restore();
+      }
+      row.rays.forEach(({rho,t},ri)=&gt;{
+        const path=geo.make(rho),parts=splitAtX(path,geo.filterX);
+        line(rayCtx,path,p.border,.22,1);
+        line(rayCtx,parts[0],color,.26,1);line(rayCtx,parts[1],color,t*.65,1.3);
+        if(progress&lt;1){
+          const time=Math.max(0,Math.min(1,(progress-ri*.004)/.96));
+          const x=path[0][0]+(path[path.length-1][0]-path[0][0])*time;
+          const pos=splitAtX(path,x)[0].slice(-1)[0],alpha=pos[0]&gt;geo.filterX?t:1;
+          if(alpha&gt;.005&amp;&amp;time&gt;0&amp;&amp;time&lt;1){rayCtx.globalAlpha=alpha;rayCtx.fillStyle=color;rayCtx.beginPath();rayCtx.arc(pos[0],pos[1],3.2,0,Math.PI*2);rayCtx.fill();rayCtx.globalAlpha=1;}
+          if(t&lt;.25&amp;&amp;x&gt;=geo.filterX&amp;&amp;x&lt;geo.filterX+width*.13){
+            const block=parts[1][0],fade=1-(x-geo.filterX)/(width*.13);
+            line(rayCtx,[[block[0]-3,block[1]-3],[block[0]+3,block[1]+3]],color,fade*.75,1.5);
+            line(rayCtx,[[block[0]-3,block[1]+3],[block[0]+3,block[1]-3]],color,fade*.75,1.5);
+          }
+        }
+      });
+      if(index===0)line(rayCtx,[[10,rowHeight-8],[width-10,rowHeight-8]],p.border,.65,1);
+    });
+    setPhase(progress);
+  }
+  function drawComparison(){
+    if(!texture)return;
+    const x=Math.round(S*+$(&#x27;wipe&#x27;).value/100),p=palette();
+    mobileCtx.clearRect(0,0,S,S);
+    mobileCtx.drawImage($(&#x27;optimized&#x27;),0,0);
+    if(x&gt;0){mobileCtx.clearRect(0,0,x,S);mobileCtx.drawImage($(&#x27;normal&#x27;),0,0,x,S,0,0,x,S);}
+    if(x&gt;0&amp;&amp;x&lt;S){
+      line(mobileCtx,[[x,0],[x,S]],p.bg,1,4);line(mobileCtx,[[x,0],[x,S]],p.fg,1,2);
+      mobileCtx.fillStyle=p.bg;mobileCtx.strokeStyle=p.fg;mobileCtx.lineWidth=2;
+      mobileCtx.beginPath();mobileCtx.arc(x,S/2,14,0,Math.PI*2);mobileCtx.fill();mobileCtx.stroke();
+      line(mobileCtx,[[x-4,S/2-5],[x-4,S/2+5]],p.fg,1,2);line(mobileCtx,[[x+4,S/2-5],[x+4,S/2+5]],p.fg,1,2);
+    }
+    const labels=current?.comparison.labels||[&#x27;前置滤镜&#x27;,&#x27;后置滤镜&#x27;];
+    $(&#x27;wipe&#x27;).setAttribute(&#x27;aria-valuetext&#x27;,&#x27;左侧&#x27;+labels[0]+&#x27;占 &#x27;+$(&#x27;wipe&#x27;).value+&#x27;%，右侧&#x27;+labels[1]+&#x27;占 &#x27;+(100-+$(&#x27;wipe&#x27;).value)+&#x27;%&#x27;);
+  }
+  $(&#x27;wipe&#x27;).addEventListener(&#x27;input&#x27;,drawComparison);
+  let drag=null;
+  function wipeAt(event){const r=mobileCanvas.getBoundingClientRect();$(&#x27;wipe&#x27;).value=String(Math.round(Math.max(0,Math.min(100,(event.clientX-r.left)/r.width*100))));drawComparison();}
+  mobileCanvas.addEventListener(&#x27;pointerdown&#x27;,event=&gt;{if(event.button!==0)return;drag={id:event.pointerId,x:event.clientX,y:event.clientY,horizontal:false};});
+  mobileCanvas.addEventListener(&#x27;pointermove&#x27;,event=&gt;{
+    if(!drag||drag.id!==event.pointerId)return;
+    const dx=Math.abs(event.clientX-drag.x),dy=Math.abs(event.clientY-drag.y);
+    if(!drag.horizontal&amp;&amp;dy&gt;dx&amp;&amp;dy&gt;8){drag=null;return;}
+    if(!drag.horizontal&amp;&amp;dx&gt;8){drag.horizontal=true;mobileCanvas.setPointerCapture(event.pointerId);}
+    if(drag.horizontal)wipeAt(event);
+  });
+  mobileCanvas.addEventListener(&#x27;pointerup&#x27;,event=&gt;{if(drag&amp;&amp;drag.id===event.pointerId){wipeAt(event);drag=null;}});
+  mobileCanvas.addEventListener(&#x27;pointercancel&#x27;,()=&gt;{drag=null;});
+  $(&#x27;play&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{
+    if(animationId){stopAnimation();drawRays(1);return;}
+    if(reduced.matches){drawRays(1);return;}
+    const start=performance.now();$(&#x27;play&#x27;).textContent=&#x27;停止动画&#x27;;
+    const tick=t=&gt;{const progress=Math.min(1,(t-start)/5400);drawRays(progress);if(progress&lt;1)animationId=requestAnimationFrame(tick);else{animationId=0;$(&#x27;play&#x27;).textContent=&#x27;播放一束光&#x27;;}};
+    animationId=requestAnimationFrame(tick);
+  });
+  $(&#x27;position&#x27;).addEventListener(&#x27;change&#x27;,()=&gt;{syncControls(true);schedule();});
+  for(const id of [&#x27;f&#x27;,&#x27;angle&#x27;])$(id).addEventListener(&#x27;input&#x27;,schedule);
+  for(const id of [&#x27;band&#x27;,&#x27;width&#x27;,&#x27;design&#x27;,&#x27;display&#x27;,&#x27;eyepiece&#x27;,&#x27;focal-left&#x27;,&#x27;focal-right&#x27;])$(id).addEventListener(&#x27;change&#x27;,schedule);
+  $(&#x27;comparison-mode&#x27;).addEventListener(&#x27;change&#x27;,schedule);
+  $(&#x27;field-view&#x27;).addEventListener(&#x27;change&#x27;,drawFields);
+  $(&#x27;ray-mode&#x27;).addEventListener(&#x27;change&#x27;,()=&gt;{stopAnimation();prepareRays();drawRays(1);});
+  $(&#x27;optical-section&#x27;).addEventListener(&#x27;toggle&#x27;,()=&gt;{if(!$(&#x27;optical-section&#x27;).open)stopAnimation();drawRays(rayProgress);});
+  new ResizeObserver(()=&gt;drawRays(rayProgress)).observe(rayCanvas);
+  function repaint(){
+    if(current)current.comparison.metrics.forEach((m,i)=&gt;{if(!m.visibleFraction)drawOutside(i);});
+    drawRays(rayProgress);drawComparison();drawFields();
+  }
+  window.matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).addEventListener(&#x27;change&#x27;,repaint);
+  new MutationObserver(repaint).observe(document.documentElement,{attributes:true,attributeFilter:[&#x27;class&#x27;,&#x27;style&#x27;,&#x27;data-theme&#x27;]});
+  reduced.addEventListener(&#x27;change&#x27;,()=&gt;{stopAnimation();drawRays(1);});
+  const img=new Image();
+  img.onload=()=&gt;{
+    const c=document.createElement(&#x27;canvas&#x27;);c.width=S;c.height=S;const ctx=c.getContext(&#x27;2d&#x27;);ctx.drawImage(img,0,0,S,S);
+    const pixels=ctx.getImageData(0,0,S,S).data;texture=new Float32Array(S*S);
+    for(let i=0;i&lt;texture.length;i++){texture[i]=Math.pow(pixels[i*4]/255,1.8);textureMean+=texture[i];}
+    textureMean/=texture.length;syncControls(false);update();
+  };
+  img.onerror=()=&gt;{$(&#x27;state-detail&#x27;).textContent=&#x27;形态图加载失败，请重新打开。&#x27;;$(&#x27;state-detail&#x27;).setAttribute(&#x27;role&#x27;,&#x27;alert&#x27;);};
+  img.src=source;
+})();
+
+&lt;/script&gt;
+
+
+
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (event) =&gt; {
+    for (const target of event.composedPath()) {
+      if (target?.nodeType === Node.ELEMENT_NODE) {
+        const trigger = target.closest(&quot;[data-tooltip]&quot;);
+        if (trigger) return trigger;
+      }
+    }
+    return null;
+  };
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handlers = {
+    pointerover: handlePointerOpen,
+    pointerdown: handlePointer,
+    pointercancel: handlePointer,
+    click: handleTouchClick,
+    pointerout: handleLeave,
+    focusin: handleFocusIn,
+    focusout: handleLeave,
+    keydown: handleKeyDown,
+    contextmenu: handleContextMenu,
+  };
+  const roots = new Map();
+  const handledEvents = new WeakSet();
+  const handleEvent = (event) =&gt; {
+    if (handledEvents.has(event)) return;
+    handledEvents.add(event);
+    handlers[event.type](event);
+  };
+  const discoverRoots = (node) =&gt; {
+    if (node.shadowRoot) listen(node.shadowRoot);
+    for (const element of node.querySelectorAll(&quot;*&quot;)) {
+      if (element.shadowRoot) listen(element.shadowRoot);
+    }
+  };
+  const listen = (root) =&gt; {
+    if (roots.has(root)) return;
+    for (const type of Object.keys(handlers)) root.addEventListener(type, handleEvent);
+    const observer = new window.MutationObserver((records) =&gt; {
+      for (const { addedNodes } of records) {
+        for (const node of addedNodes) {
+          if (node.nodeType === Node.ELEMENT_NODE) discoverRoots(node);
+        }
+      }
+      for (const [root, cleanup] of roots) {
+        if (root.host &amp;&amp; !root.host.isConnected) {
+          cleanup();
+          roots.delete(root);
+        }
+      }
+      if (activeTrigger &amp;&amp; !activeTrigger.isConnected) closeTooltip(false);
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    roots.set(root, () =&gt; {
+      observer.disconnect();
+      for (const type of Object.keys(handlers)) root.removeEventListener(type, handleEvent);
+    });
+    discoverRoots(root);
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    for (const cleanup of roots.values()) cleanup();
+    roots.clear();
+    tooltip = null;
+  };
+
+  // Events between children of one shadow root never reach the document.
+  listen(document);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-carousel&quot;&gt;
+  (() =&gt; {
+    for (const root of document.querySelectorAll(&quot;.viz-carousel&quot;)) {
+      const panels = Array.from(
+        root.querySelectorAll(&quot;:scope &gt; [data-variant]&quot;),
+      );
+      if (panels.length === 0) {
+        continue;
+      }
+      root.setAttribute(&quot;role&quot;, &quot;group&quot;);
+      panels.forEach((panel, index) =&gt; {
+        panel.hidden = index !== 0;
+        panel.setAttribute(&quot;role&quot;, &quot;group&quot;);
+        if (!panel.hasAttribute(&quot;aria-label&quot;)) {
+          panel.setAttribute(&quot;aria-label&quot;, panel.dataset.variant);
+        }
+      });
+      root.dataset.activeVariant = panels[0].dataset.variant;
+      if (panels.length === 1) {
+        continue;
+      }
+
+      const controls = document.createElement(&quot;div&quot;);
+      controls.className = &quot;viz-carousel-controls&quot;;
+      // Portable copy of the settings dropdown&#x27;s legacy glyph; no 14px icon-package preset matches it.
+      // https://github.com/openai/openai/blob/master/codex/codex-apps/webview/src/icons/chevron.svg
+      controls.innerHTML = `
+      &lt;button type=&quot;button&quot; class=&quot;viz-carousel-previous cursor-interaction&quot;&gt;&lt;i data-lucide=&quot;chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;details class=&quot;viz-carousel-picker&quot;&gt;
+        &lt;summary class=&quot;cursor-interaction&quot;&gt;
+          &lt;span class=&quot;viz-carousel-count tabular-nums&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;viz-carousel-name&quot;&gt;&lt;/span&gt;
+          &lt;svg class=&quot;viz-carousel-caret&quot; width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 20 21&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;
+            &lt;path d=&quot;M15.2793 7.71101C15.539 7.45131 15.961 7.45131 16.2207 7.71101C16.4804 7.97071 16.4804 8.39272 16.2207 8.65242L10.4707 14.4024C10.211 14.6621 9.78902 14.6621 9.52932 14.4024L3.77932 8.65242L3.69436 8.54792C3.52385 8.28979 3.55205 7.93828 3.77932 7.71101C4.00659 7.48374 4.3581 7.45554 4.61623 7.62605L4.72073 7.71101L10 12.9903L15.2793 7.71101Z&quot; fill=&quot;currentColor&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;0.6&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/summary&gt;
+        &lt;div class=&quot;viz-carousel-options&quot;&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;button type=&quot;button&quot; class=&quot;viz-carousel-next cursor-interaction&quot;&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;`;
+      const previous = controls.querySelector(&quot;.viz-carousel-previous&quot;);
+      const next = controls.querySelector(&quot;.viz-carousel-next&quot;);
+      const picker = controls.querySelector(&quot;.viz-carousel-picker&quot;);
+      const summary = picker.querySelector(&quot;summary&quot;);
+      const count = controls.querySelector(&quot;.viz-carousel-count&quot;);
+      const name = controls.querySelector(&quot;.viz-carousel-name&quot;);
+      const options = controls.querySelector(&quot;.viz-carousel-options&quot;);
+      const status = document.createElement(&quot;span&quot;);
+      status.className = &quot;sr-only&quot;;
+      status.setAttribute(&quot;role&quot;, &quot;status&quot;);
+      status.setAttribute(&quot;aria-live&quot;, &quot;polite&quot;);
+      status.setAttribute(&quot;aria-atomic&quot;, &quot;true&quot;);
+      previous.setAttribute(
+        &quot;aria-label&quot;,
+        root.dataset.previousLabel ?? &quot;Previous variant&quot;,
+      );
+      next.setAttribute(&quot;aria-label&quot;, root.dataset.nextLabel ?? &quot;Next variant&quot;);
+
+      let active = 0;
+      const choices = panels.map((panel, index) =&gt; {
+        const choice = document.createElement(&quot;button&quot;);
+        choice.type = &quot;button&quot;;
+        choice.className = &quot;cursor-interaction&quot;;
+        choice.textContent = panel.dataset.variant;
+        choice.addEventListener(&quot;click&quot;, () =&gt; {
+          select(index);
+          summary.focus();
+        });
+        options.appendChild(choice);
+        return choice;
+      });
+      const select = (index) =&gt; {
+        const changed = active !== index;
+        active = index;
+        panels.forEach((panel, position) =&gt; {
+          panel.hidden = position !== active;
+          choices[position].setAttribute(
+            &quot;aria-current&quot;,
+            String(position === active),
+          );
+        });
+        root.dataset.activeVariant = panels[active].dataset.variant;
+        count.textContent = `${active + 1} / ${panels.length}`;
+        name.textContent = panels[active].dataset.variant;
+        picker.open = false;
+        if (changed) {
+          status.textContent = `${count.textContent}: ${name.textContent}`;
+        }
+      };
+      previous.addEventListener(&quot;click&quot;, () =&gt;
+        select((active + panels.length - 1) % panels.length),
+      );
+      next.addEventListener(&quot;click&quot;, () =&gt;
+        select((active + 1) % panels.length),
+      );
+      picker.addEventListener(&quot;keydown&quot;, (event) =&gt; {
+        if (event.key === &quot;Escape&quot; &amp;&amp; picker.open) {
+          event.preventDefault();
+          picker.open = false;
+          summary.focus();
+        }
+      });
+      const dismiss = (event) =&gt; {
+        if (!picker.contains(event.target)) {
+          picker.open = false;
+        }
+      };
+      const sizePicker = () =&gt; {
+        root.style.setProperty(
+          &quot;--viz-carousel-picker-height&quot;,
+          `${picker.open ? options.offsetHeight : 0}px`,
+        );
+      };
+      picker.addEventListener(&quot;toggle&quot;, sizePicker);
+      window.addEventListener(&quot;resize&quot;, sizePicker);
+      document.addEventListener(&quot;pointerdown&quot;, dismiss);
+      window.addEventListener(
+        &quot;pagehide&quot;,
+        () =&gt; {
+          document.removeEventListener(&quot;pointerdown&quot;, dismiss);
+          window.removeEventListener(&quot;resize&quot;, sizePicker);
+        },
+        { once: true },
+      );
+      root.append(controls, status);
+      select(0);
+    }
+  })();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+  const storageKey = `codex:visualization-widget-state-v2:${JSON.stringify([
+    globalThis.location.pathname,
+    globalThis.location.search,
+  ])}`;
+  const parseState = (serializedState) => {
+    if (
+      typeof serializedState !== "string" ||
+      new TextEncoder().encode(serializedState).length > 16 * 1024
+    ) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    /** @type {unknown} */
+    const state = JSON.parse(serializedState);
+    if (
+      state == null ||
+      typeof state !== "object" ||
+      Array.isArray(state) ||
+      ("imageIds" in state &&
+        (!Array.isArray(state.imageIds) || state.imageIds.length > 0))
+    ) {
+      throw new TypeError("Widget state must be a JSON object");
+    }
+    const storedState = { modelContent: null, privateContent: null, ...state };
+    const canonicalState = JSON.stringify(
+      storedState,
+      (_key, /** @type {unknown} */ value) => {
+        if (typeof value === "number" && !Number.isFinite(value)) {
+          throw new TypeError("Widget state must contain finite numbers");
+        }
+        return value;
+      },
+    );
+    if (new TextEncoder().encode(canonicalState).length > 16 * 1024) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    return storedState;
+  };
+  let storage = null;
+  let state = null;
+  try {
+    const localStorage = globalThis.localStorage;
+    const probeKey = `${storageKey}:probe`;
+    localStorage.setItem(probeKey, "1");
+    localStorage.removeItem(probeKey);
+    storage = localStorage;
+    const savedState = storage.getItem(storageKey);
+    if (savedState != null) {
+      try {
+        state = parseState(savedState);
+      } catch {
+        // Invalid saved state does not disable future writes.
+      }
+    }
+  } catch {
+    storage = null;
+  }
+  const initialGlobals = {
+    widgetState: state,
+    statePersistence: storage == null ? "none" : "local",
+  };
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "widget-state-write") {
+      if (!Number.isSafeInteger(data.id) || data.id <= 0) {
+        return;
+      }
+      let ok = false;
+      try {
+        if (storage != null) {
+          const state = parseState(data.state);
+          storage.setItem(storageKey, JSON.stringify(state));
+          ok = true;
+        }
+      } catch {
+        // Storage denial, quota limits, and invalid state return a failed receipt.
+      }
+      channel.port1.postMessage({
+        type: "widget-state-result",
+        id: data.id,
+        ok,
+      });
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  // Match the trusted bootstrap element, not the same text in an authored title.
+  frame.srcdoc = srcdoc.replace(
+    '<script type="application/json" id="codex-visualization-widget-state">__CODEX_VISUALIZATION_WIDGET_STATE__<\/script>',
+    () =>
+      '<script type="application/json" id="codex-visualization-widget-state">' +
+      JSON.stringify(initialGlobals).replaceAll("<", "\\u003c") +
+      "<\/script>",
+  );
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
